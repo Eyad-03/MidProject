@@ -1,0 +1,28 @@
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.menu a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 15px;
+
+  padding: 10px 12px;
+  border-radius: 8px;
+
+  transition: 0.2s;
+}
+
+.menu a:hover {
+  background: #e2e8f0;
+  color: rgb(43, 43, 43);
+}

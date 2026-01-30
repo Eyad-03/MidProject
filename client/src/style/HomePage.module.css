@@ -1,0 +1,235 @@
+.bg_home {
+  background-color: #004a4a;
+  margin-top: 0px;
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+}
+
+.bg1 {
+  padding: 100px 0px 0px 100px;
+}
+
+.bg2 {
+  padding: 20px 140px 0px 0px;
+}
+
+.bg_text {
+  color: white;
+  line-height: 0.5;
+}
+
+.bg_text h1 {
+  font-size: clamp(40px, 4vw, 56px);
+  letter-spacing: 1px;
+  margin: 0 0 10px 0;
+}
+
+.bg_text h2 {
+  font-size: clamp(18px, 2vw, 28px);
+  margin: 40px 0 14px 0;
+  opacity: 0.95;
+}
+
+.bg_text p {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 15.5px;
+  width: min(520px, 100%);
+  line-height: 1.6;
+  margin: 0 0 24px 0;
+}
+
+.trend_text {
+  color: white;
+}
+
+.badge_trend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 0px;
+  margin: 0;
+  list-style: none;
+}
+
+.badge_trend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px);
+
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+
+  transition:
+    transform 160ms ease,
+    background 160ms ease,
+    border-color 160ms ease;
+}
+
+.badge_trend li:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+.header_popular {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.img_popular {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 16px;
+
+  padding: 0;
+  margin: 18px 0 0 0;
+  list-style: none;
+}
+
+.img_popular img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+
+  border-radius: 14px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: #f8fafc;
+
+  box-shadow: 0 8px 20px rgba(2, 6, 23, 0.08);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.img_popular img:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 40px rgba(2, 6, 23, 0.14);
+}
+
+.section_popular {
+  padding: 44px 24px 10px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.headering {
+  margin-top: 40px;
+  background: linear-gradient(180deg, #eef3f3, #ffffff);
+
+  padding: 54px 24px;
+
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 28px;
+  align-items: center;
+}
+
+.grid_header1 {
+  padding: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.grid_header1 h1 {
+  margin: 0 0 18px 0;
+  font-size: clamp(22px, 2.4vw, 34px);
+  line-height: 1.15;
+}
+
+.grid_header2 {
+  margin-top: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.grid_header2 img {
+  width: min(520px, 100%);
+  height: auto;
+
+  border-radius: 22px;
+  box-shadow: 0 14px 40px rgba(2, 6, 23, 0.14);
+  border: 1px solid rgba(15, 23, 42, 0.1);
+}
+
+.flex_heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card_header {
+  width: min(560px, 100%);
+
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 18px;
+
+  padding: 14px 14px 12px 14px;
+
+  box-shadow: 0 10px 28px rgba(2, 6, 23, 0.06);
+  transition:
+    transform 170ms ease,
+    box-shadow 170ms ease,
+    border-color 170ms ease;
+}
+.card_header:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(2, 6, 23, 0.12);
+  border-color: rgba(59, 130, 246, 0.25);
+}
+
+.card_header p {
+  margin: 0;
+  color: #64748b;
+  line-height: 1.6;
+  font-size: 14.5px;
+}
+
+.list_heading {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 0;
+  margin: 0;
+}
+
+.grid_category {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 50px;
+}
+
+.image_category {
+  width: 300px;
+  height: 100px;
+  object-fit: cover;
+
+  border-radius: 14px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: #f8fafc;
+
+  box-shadow: 0 8px 20px rgba(2, 6, 23, 0.08);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.image_category:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 40px rgba(2, 6, 23, 0.14);
+}
+
+.category {
+  padding: 50px 80px;
+}
+
+.category h2 {
+  margin-bottom: 60px;
+}

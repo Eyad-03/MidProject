@@ -1,0 +1,11 @@
+.container_serviceCard
+{
+    padding: 15px 60px;
+}
+
+.grid_service
+{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 50px;
+}

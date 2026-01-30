@@ -1,0 +1,107 @@
+.layout {
+  display: grid;
+
+  grid-template-columns: 260px 1fr;
+  grid-template-rows: 70px 1fr;
+
+  grid-template-areas:
+    "nav nav"
+    "sidebar main";
+}
+
+/* Navbar Area */
+.nav {
+  grid-area: nav;
+  
+}
+
+/* Sidebar Area */
+.sidebar {
+  grid-area: sidebar;
+  width: 260px;
+  min-height: 100vh;
+  background: rgba(14, 74, 74, 0.85);
+  border-right: 1px solid #e2e8f0;
+  padding: 20px;
+}
+
+/* Main Area */
+.main {
+  grid-area: main;
+  padding: 40px;
+  background: #f9fafb;
+  min-height: 100vh;
+}
+
+
+.header h2 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.header p {
+  color: #555;
+  margin-bottom: 25px;
+}
+
+/* Requests Grid */
+.requestsGrid {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 20px;
+}
+
+/* Request Card */
+.card {
+  background: white;
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  border: 1px solid rgba(0,0,0,0.05);
+  transition: 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+/* Title */
+.card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* Description */
+.desc {
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 15px;
+}
+
+/* Meta Info */
+.meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #00796b;
+  margin-bottom: 18px;
+}
+
+/* Button */
+.btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 12px;
+  background: #00796b;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  background: #005f56;
+}

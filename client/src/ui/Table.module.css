@@ -1,0 +1,230 @@
+.tableWrapper {
+  width: 100%;
+  overflow-x: auto;
+  padding: 20px;
+}
+
+.adminTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "Segoe UI", sans-serif;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* رأس الجدول */
+.adminTable thead {
+  background: #0f3d3e;
+  color: white;
+}
+
+.adminTable th {
+  text-align: left;
+  padding: 14px 18px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* الصفوف */
+.adminTable td {
+  padding: 14px 18px;
+  font-size: 14px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* صفوف متناوبة */
+.adminTable tbody tr:nth-child(even) {
+  background: #f9fafb;
+}
+
+/* Hover */
+.adminTable tbody tr:hover {
+  background: rgba(15, 61, 62, 0.08);
+  transition: 0.2s ease;
+}
+
+/* عمود كلمة السر الطويل */
+.adminTable td.password {
+  max-width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* أزرار */
+.actionBtns {
+  display: flex;
+  gap: 8px;
+}
+
+.btnEdit {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  font-size: 13px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btnEdit:hover {
+  background: #1e4ed8;
+}
+
+.btnDelete {
+  background: #dc2626;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  font-size: 13px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.btnDelete:hover {
+  background: #b91c1c;
+}
+
+
+.btnSave {
+    background: #18753c;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  font-size: 13px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btnSave:hover {
+  background: #176869;
+}
+
+.fieldCell {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fieldLabel {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.editInput {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  outline: none;
+}
+
+.editInput:focus {
+  border-color: #0f3d3e;
+  box-shadow: 0 0 0 3px rgba(15, 61, 62, 0.15);
+}
+
+.actionCell {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Container */
+.addCategoryBox {
+  margin-top: 20px;
+}
+
+/* Add Button */
+.btnAddCategory {
+  background: #0f766e;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btnAddCategory:hover {
+  background: #115e59;
+}
+
+/* Form Box */
+.categoryForm {
+  margin-top: 15px;
+  padding: 15px;
+  width: 320px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Form Group */
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+
+.formGroup label {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #0f172a;
+}
+
+/* Inputs */
+.formGroup input {
+  padding: 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  font-size: 14px;
+  outline: none;
+}
+
+.formGroup input:focus {
+  border-color: #0f766e;
+}
+
+/* Submit Button */
+.btnSubmit {
+  width: 100%;
+  background: #0f766e;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btnSubmit:hover {
+  background: #0f766e;
+}
+
+.adminTable {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; /* مهم جدًا حتى لا يكبر الجدول بسبب محتوى خلية */
+}
+
+/* وزّع عرض الأعمدة (عدّل النسب حسب رغبتك) */
+
+
+
+
+.imageCell {
+  overflow: hidden;
+}
+
+.truncate {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

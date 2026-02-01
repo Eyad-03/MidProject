@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import api from "../api";
-import style from "../style/UpdateUser.module.css";
+import api from "../../api";
+import style from "../../ui/Table.module.css";
 
 function UpdateUser() {
   const [users, setUsers] = useState([]);
@@ -20,9 +20,9 @@ function UpdateUser() {
     }
   };
 
-  const handleDelete =async (id) => {
+  const handleDelete = async (id) => {
     try {
-      const res =await api.delete(`/deleteUser/${id}`);
+      const res = await api.delete(`/deleteUser/${id}`);
 
       if (res.status === 200) {
         setUsers((users) => users.filter((user) => user._id !== id));

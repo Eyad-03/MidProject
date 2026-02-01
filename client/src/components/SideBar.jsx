@@ -10,7 +10,7 @@ function SideBar() {
 
       <nav className={style.menu}>
         <Link to="profile">Profile</Link>
-        <Link to="#">Settings</Link>
+        <Link to="setting">Settings</Link>
         <Link to="#">Messages</Link>
         <Link to="#">Logout</Link>
       </nav>

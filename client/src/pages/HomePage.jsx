@@ -7,51 +7,39 @@ import video from "../image/video.png";
 import seo from "../image/seo.png";
 import logo from "../image/logo.png";
 import office from "../image/office.png";
+import api from "../api";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 import { FaCheckCircle } from "react-icons/fa";
 import { FaArrowTrendUp } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 
 function HomePage() {
-  const categoryName = [
-    {
-      name: "web",
-      img: web,
-    },
 
-    {
-      name: "logo",
-      img: logo,
-    },
+  const [categories, setCategories] = useState([]);
+  const navigate = useNavigate();
 
-    {
-      name: "video",
-      img: video,
-    },
 
-    {
-      name: "seo",
-      img: seo,
-    },
-    {
-      name: "web",
-      img: web,
-    },
+    const fetchCategory = async () => {
+    try {
+      const res = await api.get("/getAllCategory");
+      if (res.status !== 200) {
+        toast.error(res.data.message);
+      }
 
-    {
-      name: "logo",
-      img: logo,
-    },
+      setCategories(res.data.categories);
+      
+    } catch {
+      toast.error("Faild to fetch category");
+    }
+  };
 
-    {
-      name: "video",
-      img: video,
-    },
 
-    {
-      name: "seo",
-      img: seo,
-    },
-  ];
+    useEffect(() => {
+      fetchCategory();
+    }, []);
+  
 
   return (
     <>
@@ -151,8 +139,12 @@ function HomePage() {
         <h2>Here Are Category</h2>
 
         <div className={style.grid_category}>
-          {categoryName.map((category) => (
-            <img className={style.image_category} src={category.img} />
+          {categories.map((category) => (
+            <img
+              className={style.image_category}
+              src={category.image}
+              onClick={() => navigate(`/service/${category._id}`)}
+            />
           ))}
         </div>
       </section>

@@ -6,6 +6,8 @@ import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import authRoutes from './routes/auth.Routes.js'
 import userRoutes from './routes/user.Routes.js'
+import categoryRoutes from './routes/category.Routes.js'
+import serviceRoutes from './routes/service.Routes.js'
 dotenv.config();
 connectDB();
 
@@ -23,6 +25,8 @@ app.use(express.json());
 
 app.use('/api',authRoutes)
 app.use('/api',userRoutes)
+app.use('/api',categoryRoutes)
+app.use('/api',serviceRoutes)
 
 const PORT = process.env.PORT
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

@@ -11,12 +11,12 @@ function ServiceCard({service}) {
 
         <div>
           <div className={style.details_provider1}>
-            <p>eyad</p>
-            <p>I will design a modern minimalist logo</p>
+            <p>{service.name}</p>
+            <p>{service.description}</p>
           </div>
           <div className={style.details_provider2}>
-            <p>⭐4.9</p>
-            <p>From 300$</p>
+            <p>{service.rate}</p>
+            <p>{service.price}</p>
           </div>
         </div>
       </div>

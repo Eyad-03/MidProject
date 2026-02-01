@@ -1,10 +1,10 @@
-import style from "../style/ProfileProvider.module.css";
+import style from "../style/Profile.module.css";
 import teo from '../image/teo.webp'
 import { MdEmail } from "react-icons/md";
 import { FaInstagram } from "react-icons/fa";
 import { FaRegMessage } from "react-icons/fa6";
 
-function ProfileProvider() {
+function Profile() {
   return (
     <>
       <div className={style.container_profile}>
@@ -38,4 +38,4 @@ function ProfileProvider() {
   );
 }
 
-export default ProfileProvider;
+export default Profile;

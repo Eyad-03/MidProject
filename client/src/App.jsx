@@ -9,10 +9,12 @@ import ServicePage from "./pages/ServicePage";
 import DashboardProvider from "./pages/DashboardProvider";
 import DashboardAdmin from "./pages/DashboardAdmin";
 import MainProvider from "./pages/MainProvider";
-import ProfileProvider from "./pages/ProfileProvider";
+import Profile from "./pages/Profile";
 import { Toaster } from "react-hot-toast";
-import UpdateUser from "./components/UpdateUser";
+import UpdateUser from "./components/Admin/UpdateUser";
 import MainAdmin from "./pages/MainAdmin";
+import UpdateCategory from "./components/Admin/UpdateCategory";
+import UpdateService from "./components/Admin/UpdateService";
 function App() {
   return (
     <>
@@ -23,14 +25,19 @@ function App() {
           <Route path="/home" element={<HomePage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/signin" element={<SigninPage />} />
-          <Route path="/service" element={<ServicePage />} />
+          <Route path="/service/:id" element={<ServicePage />} />
           <Route path="/dashboardAdmin" element={<DashboardAdmin />}>
-          <Route path="" element={<MainAdmin />} />
+            <Route path="" element={<MainAdmin />} />
+            <Route path="setting" element={<MainAdmin />} />
             <Route path="updateUser" element={<UpdateUser />} />
+            <Route path="updateCategory" element={<UpdateCategory />} />
+            <Route path="updateService" element={<UpdateService />} />
+            <Route path="profile" element={<Profile />} />
           </Route>
           <Route path="/dashboardProvider" element={<DashboardProvider />}>
             <Route path="" element={<MainProvider />} />
-            <Route path="profile" element={<ProfileProvider />} />
+            <Route path="setting" element={<MainProvider />} />
+            <Route path="profile" element={<Profile />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -19,7 +19,7 @@ function MainAdmin() {
     {
       name: "Update Services",
       description: "Looking for professional translation of 10 pages document.",
-      path: "updateServices",
+      path: "updateService",
     },
     {
       name: "Update Category",

@@ -40,7 +40,7 @@ fetchService()
     <>
       <NavBar />
       <div className={style.container_serviceCard}>
-        <h1>Logo Design</h1>
+        <h1>{services.name}</h1>
 
         <div className={style.grid_service}>
           {services.map((service) => (

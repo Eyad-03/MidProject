@@ -16,12 +16,10 @@ import { FaArrowTrendUp } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 
 function HomePage() {
-
   const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
 
-
-    const fetchCategory = async () => {
+  const fetchCategory = async () => {
     try {
       const res = await api.get("/getAllCategory");
       if (res.status !== 200) {
@@ -29,17 +27,14 @@ function HomePage() {
       }
 
       setCategories(res.data.categories);
-      
     } catch {
       toast.error("Faild to fetch category");
     }
   };
 
-
-    useEffect(() => {
-      fetchCategory();
-    }, []);
-  
+  useEffect(() => {
+    fetchCategory();
+  }, []);
 
   return (
     <>
@@ -100,31 +95,32 @@ function HomePage() {
             <div className={style.card_header}>
               <span className={style.flex_heading}>
                 <FaCheckCircle color="green" />
-                <h2>Heading 1</h2>
+                <h2>Discover and Connect with Skilled Freelancers</h2>
               </span>
               <p>
-                Lorem Ipsum Dolor Sit Amet, Interdum A Suscipit Et, Consequat
-                Nec Nibh. Lorem Ipsum Dolor Sit Amet, Interdum
+                Find the perfect professional for your project from a wide range
+                of talented freelancers with the expertise you need, whether
+                it's design
               </p>
             </div>
             <div className={style.card_header}>
               <span className={style.flex_heading}>
                 <FaCheckCircle color="green" />
-                <h2>Heading 2</h2>
+                <h2>How Our Platform Simplifies </h2>
               </span>
               <p>
-                Lorem Ipsum Dolor Sit Amet, Interdum A Suscipit Et, Consequat
-                Nec Nibh. Lorem Ipsum Dolor Sit Amet, Interdum
+                Enjoy a smooth and efficient way to collaborate with
+                freelancers. From posting projects to seamless communication
               </p>
             </div>
             <div className={style.card_header}>
               <span className={style.flex_heading}>
                 <FaCheckCircle color="green" />
-                <h2>Heading 3</h2>
+                <h2>Join a Thriving Community of Professionals</h2>
               </span>
               <p>
-                Lorem Ipsum Dolor Sit Amet, Interdum A Suscipit Et, Consequat
-                Nec Nibh. Lorem Ipsum Dolor Sit Amet, Interdum
+                Become a part of a dynamic and growing community where
+                professionals from diverse fields come together to collaborate
               </p>
             </div>
           </ul>
@@ -136,15 +132,18 @@ function HomePage() {
       </section>
 
       <section className={style.category}>
-        <h2>Here Are Category</h2>
+        <h2>Here Are Categories</h2>
 
         <div className={style.grid_category}>
           {categories.map((category) => (
-            <img
-              className={style.image_category}
-              src={category.image}
-              onClick={() => navigate(`/service/${category._id}`)}
-            />
+            <div key={category._id} className={style.category_item}>
+              <h3 className={style.category_heading}>{category.name}</h3>
+              <img
+                className={style.image_category}
+                src={category.image}
+                onClick={() => navigate(`/service/${category._id}`)}
+              />
+            </div>
           ))}
         </div>
       </section>

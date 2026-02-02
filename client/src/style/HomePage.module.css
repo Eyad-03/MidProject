@@ -132,7 +132,7 @@
 }
 
 .grid_header1 {
-  padding: 0;
+  padding-left: 34px;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -202,13 +202,13 @@
 
 .grid_category {
   display: grid;
-  grid-template-columns: auto auto auto auto;
-  gap: 50px;
+  grid-template-columns: auto auto auto;
+  gap: 80px;
 }
 
 .image_category {
   width: 300px;
-  height: 100px;
+  height: 150px;
   object-fit: cover;
 
   border-radius: 14px;
@@ -228,8 +228,16 @@
 
 .category {
   padding: 50px 80px;
+  background: linear-gradient(180deg, #eef3f3, #ffffff);
 }
 
 .category h2 {
   margin-bottom: 60px;
+  color: rgb(81, 98, 233);
+  font-size: 25px;
+}
+
+.category_heading
+{
+  font-weight: 500;
 }

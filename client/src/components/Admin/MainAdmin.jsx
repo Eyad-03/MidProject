@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import style from "../style/MainProvider.module.css";
+import style from "../../style/MainProvider.module.css";
 
 
 function MainAdmin() {
@@ -9,22 +9,18 @@ function MainAdmin() {
     {
       name: "Update User",
       description: "Need a modern landing page for a startup marketplace.",
-      path: "updateUser",
+      path: "/dashboardAdmin/updateUser",
     },
-    {
-      name: "Update Provider",
-      description: "Looking for professional translation of 10 pages document.",
-      path: "updateProvider",
-    },
+
     {
       name: "Update Services",
       description: "Looking for professional translation of 10 pages document.",
-      path: "updateService",
+      path: "/dashboardAdmin/updateService",
     },
     {
       name: "Update Category",
       description: "Looking for professional translation of 10 pages document.",
-      path: "updateCategory",
+      path: "/dashboardAdmin/updateCategory",
     },
   ];
 

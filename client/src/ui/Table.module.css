@@ -86,9 +86,8 @@
   background: #b91c1c;
 }
 
-
 .btnSave {
-    background: #18753c;
+  background: #18753c;
   color: white;
   border: none;
   padding: 6px 12px;
@@ -210,13 +209,8 @@
 .adminTable {
   width: 100%;
   border-collapse: collapse;
-  table-layout: fixed; /* مهم جدًا حتى لا يكبر الجدول بسبب محتوى خلية */
+  table-layout: fixed;
 }
-
-/* وزّع عرض الأعمدة (عدّل النسب حسب رغبتك) */
-
-
-
 
 .imageCell {
   overflow: hidden;
@@ -227,4 +221,23 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.search {
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.search input {
+  padding: 10px;
+  border-radius: 8px;
+  width: 70%;
+  border: 1px solid gray;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.search input:focus {
+  border: 1px solid #0f766e !important;
+  outline: none;
+  box-shadow: 0 0 8px rgba(15, 118, 110, 0.6);
 }

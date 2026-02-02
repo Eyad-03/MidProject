@@ -7,6 +7,7 @@ function UpdateCategory() {
   const [categories, setCategories] = useState([]);
   const [editedCategory, setEditedCategory] = useState({});
   const [editingId, setEditingId] = useState(null);
+  const [query, setQuery] = useState("");
   const [addCategory, setAddCategory] = useState({
     name: "",
     image: "",
@@ -72,6 +73,7 @@ function UpdateCategory() {
       }
 
       toast.success(res.data.message);
+      setAddCategory("");
     } catch (err) {
       toast.error("faild add category");
     }
@@ -83,10 +85,18 @@ function UpdateCategory() {
 
   return (
     <>
+      <div className={style.search}>
+        <input
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="search..."
+        />
+      </div>
       <div className={style.tableWrapper}>
         <table className={style.adminTable}>
           <thead>
             <tr>
+              <th>Id</th>
               <th>Name</th>
               <th>Image</th>
               <th>Action</th>
@@ -94,92 +104,99 @@ function UpdateCategory() {
           </thead>
 
           <tbody>
-            {categories.map((category) => {
-              const isEditing = editingId === category._id;
+            {categories
+              .filter(
+                (category) =>
+                  category.name.toLowerCase().includes(query.toLowerCase()) 
+                 
+              )
+              .map((category) => {
+                const isEditing = editingId === category._id;
 
-              return (
-                <tr key={category._id}>
-                  {isEditing ? (
-                    <td>
-                      <input
-                        value={editedCategory.name}
-                        className={style.editInput}
-                        onChange={(e) =>
-                          setEditedCategory({
-                            ...editedCategory,
-                            name: e.target.value,
-                          })
-                        }
-                      />
-                    </td>
-                  ) : (
-                    <td>{category.name}</td>
-                  )}
-                  {isEditing ? (
-                    <td>
-                      <input
-                        value={editedCategory.image}
-                        className={style.editInput}
-                        onChange={(e) =>
-                          setEditedCategory({
-                            ...editedCategory,
-                            image: e.target.value,
-                          })
-                        }
-                      />
-                    </td>
-                  ) : (
-                    <td className={style.imageCell}>
-                      <span className={style.truncate} title={category.image}>
-                        {category.image}
-                      </span>
-                    </td>
-                  )}
-
-                  <td>
+                return (
+                  <tr key={category._id}>
+                    <td>{category._id}</td>
                     {isEditing ? (
-                      <div className={style.actionBtns}>
-                        <button
-                          className={style.btnEdit}
-                          onClick={() => setEditingId(null)}
-                        >
-                          cancel
-                        </button>
-
-                        <button
-                          className={style.btnSave}
-                          onClick={() => handleSaveEdit(category._id)}
-                        >
-                          save
-                        </button>
-                      </div>
+                      <td>
+                        <input
+                          value={editedCategory.name}
+                          className={style.editInput}
+                          onChange={(e) =>
+                            setEditedCategory({
+                              ...editedCategory,
+                              name: e.target.value,
+                            })
+                          }
+                        />
+                      </td>
                     ) : (
-                      <div className={style.actionBtns}>
-                        <button
-                          className={style.btnEdit}
-                          onClick={() => {
-                            (setEditingId(category._id),
-                              setEditedCategory({
-                                name: category.name,
-                                image: category.image,
-                              }));
-                          }}
-                        >
-                          Edit
-                        </button>
-
-                        <button
-                          className={style.btnDelete}
-                          onClick={() => handleDelete(category._id)}
-                        >
-                          Delete
-                        </button>
-                      </div>
+                      <td>{category.name}</td>
                     )}
-                  </td>
-                </tr>
-              );
-            })}
+                    {isEditing ? (
+                      <td>
+                        <input
+                          value={editedCategory.image}
+                          className={style.editInput}
+                          onChange={(e) =>
+                            setEditedCategory({
+                              ...editedCategory,
+                              image: e.target.value,
+                            })
+                          }
+                        />
+                      </td>
+                    ) : (
+                      <td className={style.imageCell}>
+                        <span className={style.truncate} title={category.image}>
+                          {category.image}
+                        </span>
+                      </td>
+                    )}
+
+                    <td>
+                      {isEditing ? (
+                        <div className={style.actionBtns}>
+                          <button
+                            className={style.btnEdit}
+                            onClick={() => setEditingId(null)}
+                          >
+                            cancel
+                          </button>
+
+                          <button
+                            className={style.btnSave}
+                            onClick={() => handleSaveEdit(category._id)}
+                          >
+                            save
+                          </button>
+                        </div>
+                      ) : (
+                        <div className={style.actionBtns}>
+                          <button
+                            className={style.btnEdit}
+                            onClick={() => {
+                              (setEditingId(category._id),
+                                setEditedCategory({
+                                  name: category.name,
+                                  image: category.image,
+                                }));
+                            }}
+                          >
+                            Edit
+                          </button>
+
+                          <button
+                            className={style.btnDelete}
+                            onClick={() => handleDelete(category._id)}
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      )}
+                    </td>
+                  </tr>
+                );
+              })}
           </tbody>
         </table>
       </div>

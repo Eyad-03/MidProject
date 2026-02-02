@@ -6,7 +6,7 @@ function ServiceCard({service}) {
     <>
       <div className={style.serviceCard}>
         <div className={style.photo_service}>
-          <img src={service.img} />
+          <img src={service.image} />
         </div>
 
         <div>
@@ -17,6 +17,9 @@ function ServiceCard({service}) {
           <div className={style.details_provider2}>
             <p>{service.rate}</p>
             <p>{service.price}</p>
+          </div>
+          <div className={style.btn_apply}>
+            <button>Apply</button>
           </div>
         </div>
       </div>

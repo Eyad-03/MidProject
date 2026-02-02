@@ -1,4 +1,4 @@
-import style from "../style/MainProvider.module.css";
+import style from "../../style/MainProvider.module.css";
 
 const ProviderCard = [
   {

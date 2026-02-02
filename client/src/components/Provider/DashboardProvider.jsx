@@ -1,6 +1,6 @@
-import NavBar from "../components/NavBar";
-import SideBar from "../components/SideBar";
-import style from "../style/DashboardProvider.module.css";
+import NavBar from "../NavBar";
+import SideBar from "../SideBar";
+import style from "../../style/DashboardProvider.module.css";
 import { Outlet } from "react-router-dom";
 
 

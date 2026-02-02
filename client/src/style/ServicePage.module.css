@@ -1,3 +1,8 @@
+body
+{
+    background: linear-gradient(180deg, #bbd5d5, #ffffff);
+}
+
 .container_serviceCard
 {
     padding: 15px 60px;

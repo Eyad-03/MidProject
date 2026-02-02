@@ -5,6 +5,7 @@ import style from "../../ui/Table.module.css";
 
 function UpdateUser() {
   const [users, setUsers] = useState([]);
+  const [query, setQuery] = useState("");
 
   const fetchUser = async () => {
     try {
@@ -39,6 +40,13 @@ function UpdateUser() {
 
   return (
     <>
+      <div className={style.search}>
+        <input
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="search..."
+        />
+      </div>
       <div className={style.tableWrapper}>
         <table className={style.adminTable}>
           <thead>
@@ -52,28 +60,34 @@ function UpdateUser() {
           </thead>
 
           <tbody>
-            {users.map((user) => (
-              <tr key={user._id}>
-                <td>{user.name}</td>
-                <td>{user.email}</td>
+            {users
+              .filter(
+                (user) =>
+                  user.name.toLowerCase().includes(query.toLowerCase()) ||
+                  user.email.includes(query),
+              )
 
-                <td className={style.password}>{user.password}</td>
+              .map((user) => (
+                <tr key={user._id}>
+                  <td>{user.name}</td>
+                  <td>{user.email}</td>
 
-                <td>{user.role}</td>
+                  <td className={style.password}>{user.password}</td>
 
-                <td>
-                  <div className={style.actionBtns}>
-                    <button className={style.btnEdit}>Edit</button>
-                    <button
-                      className={style.btnDelete}
-                      onClick={() => handleDelete(user._id)}
-                    >
-                      Delete
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            ))}
+                  <td>{user.role}</td>
+
+                  <td>
+                    <div className={style.actionBtns}>
+                      <button
+                        className={style.btnDelete}
+                        onClick={() => handleDelete(user._id)}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>

@@ -1,0 +1,150 @@
+/* ProfileUser.module.css */
+
+body {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+
+
+.formContainer {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 30px;
+  border: 1px solid #ddd;
+  transition: all 0.3s ease;
+}
+
+.formContainer:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.formContainer form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.formContainer label {
+  font-weight: 600;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.formContainer input {
+  padding: 12px 15px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.formContainer input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.formContainer input:disabled {
+  background-color: #f1f1f1;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.buttonContainer button {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.buttonContainer button:hover {
+  background-color: #0056b3;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.buttonContainer button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.changeButton {
+  background-color: #28a745;
+}
+
+.changeButton:hover {
+  background-color: #218838;
+}
+
+.saveButton {
+  background-color: #ffc107 !important;
+  color: #333;
+}
+
+.saveButton:hover {
+  background-color: #e0a800 !important;
+}
+
+.header {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #333;
+  text-align: center;
+  background: linear-gradient(45deg, #007bff, #28a745);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sectionTitle {
+  font-size: 22px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: #333;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 10px;
+}
+
+.error {
+  color: #dc3545;
+  font-size: 14px;
+  margin-top: 5px;
+}
+

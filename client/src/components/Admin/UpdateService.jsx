@@ -7,6 +7,7 @@ function UpdateService() {
   const [services, setServices] = useState([]);
   const [editedService, setEditedService] = useState({});
   const [editingId, setEditingId] = useState(null);
+  const [query, setQuery] = useState("");
   const [addService, setAddService] = useState({
     name: "",
     description: "",
@@ -67,19 +68,28 @@ function UpdateService() {
   };
 
   const handleAdd = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
       const res = await api.post("/createService", addService);
-      console.log(res)
+      console.log(res);
 
       if (res.status !== 200) {
         toast.error(res.data.message);
       }
 
-      setServices((prev) => [...prev, addService])
+      setServices((prev) => [...prev, addService]);
 
       toast.success(res.data.message);
-      fetchservices()
+      fetchservices();
+
+      setAddService({
+        name: "",
+        description: "",
+        price: "",
+        image: "",
+        rate: "",
+        category: "",
+      });
     } catch (err) {
       toast.error("faild add category");
     }
@@ -91,6 +101,13 @@ function UpdateService() {
 
   return (
     <>
+      <div className={style.search}>
+        <input
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="search..."
+        />
+      </div>
       <div className={style.tableWrapper}>
         <table className={style.adminTable}>
           <thead>
@@ -98,7 +115,7 @@ function UpdateService() {
               <th>Name</th>
               <th>Description</th>
               <th>Category</th>
-              <th>Price</th>
+              <th style={{ paddingLeft: "55px" }}>Price</th>
               <th>Rate</th>
               <th>Image</th>
               <th>Action</th>
@@ -106,165 +123,170 @@ function UpdateService() {
           </thead>
 
           <tbody>
-            {services.map((service) => {
-              const isEditing = editingId === service._id;
+            {services
+              .filter(
+                (service) =>
+                  service.name.toLowerCase().includes(query.toLowerCase()) ||
+                  service.price.includes(query),
+              )
+              .map((service) => {
+                const isEditing = editingId === service._id;
 
-              return (
-                <tr key={service._id}>
-                  {isEditing ? (
-                    <td>
-                      <input
-                        value={editedService.name}
-                        className={style.editInput}
-                        onChange={(e) =>
-                          setEditedService({
-                            ...editedService,
-                            name: e.target.value,
-                          })
-                        }
-                      />
-                    </td>
-                  ) : (
-                    <td>{service.name}</td>
-                  )}
-
-                  {isEditing ? (
-                    <td>
-                      <input
-                        value={editedService.description}
-                        className={style.editInput}
-                        onChange={(e) =>
-                          setEditedService({
-                            ...editedService,
-                            description: e.target.value,
-                          })
-                        }
-                      />
-                    </td>
-                  ) : (
-                    <td>{service.description}</td>
-                  )}
-
-                  {isEditing ? (
-                    <td>
-                      <input
-                        value={editedService.category}
-                        className={style.editInput}
-                        onChange={(e) =>
-                          setEditedService({
-                            ...editedService,
-                            category: e.target.value,
-                          })
-                        }
-                      />
-                    </td>
-                  ) : (
-                    <td>{service.category}</td>
-                  )}
-                  {isEditing ? (
-                    <td>
-                      <input
-                        value={editedService.price}
-                        className={style.editInput}
-                        onChange={(e) =>
-                          setEditedService({
-                            ...editedService,
-                            price: e.target.value,
-                          })
-                        }
-                      />
-                    </td>
-                  ) : (
-                    <td>{service.price}</td>
-                  )}
-
-                  {isEditing ? (
-                    <td>
-                      <input
-                        value={editedService.rate}
-                        className={style.editInput}
-                        onChange={(e) =>
-                          setEditedService({
-                            ...editedService,
-                            rate: e.target.value,
-                          })
-                        }
-                      />
-                    </td>
-                  ) : (
-                    <td>{service.rate}</td>
-                  )}
-
-
-                  {isEditing ? (
-                    <td>
-                      <input
-                        value={editedService.image}
-                        className={style.editInput}
-                        onChange={(e) =>
-                          setEditedService({
-                            ...editedService,
-                            image: e.target.value,
-                          })
-                        }
-                      />
-                    </td>
-                  ) : (
-                    <td className={style.imageCell}>
-                      <span className={style.truncate} title={service.image}>
-                        {service.image}
-                      </span>
-                    </td>
-                  )}
-
-                  <td>
+                return (
+                  <tr key={service._id}>
                     {isEditing ? (
-                      <div className={style.actionBtns}>
-                        <button
-                          className={style.btnEdit}
-                          onClick={() => setEditingId(null)}
-                        >
-                          cancel
-                        </button>
-
-                        <button
-                          className={style.btnSave}
-                          onClick={() => handleSaveEdit(service._id)}
-                        >
-                          save
-                        </button>
-                      </div>
+                      <td>
+                        <input
+                          value={editedService.name}
+                          className={style.editInput}
+                          onChange={(e) =>
+                            setEditedService({
+                              ...editedService,
+                              name: e.target.value,
+                            })
+                          }
+                        />
+                      </td>
                     ) : (
-                      <div className={style.actionBtns}>
-                        <button
-                          className={style.btnEdit}
-                          onClick={() => {
-                            (setEditingId(service._id),
-                              setEditedService({
-                                name: service.name,
-                                image: service.image,
-                                description: service.description,
-                                rate: service.rate,
-                                price: service.price,
-                                category:service.category
-                              }));
-                          }}
-                        >
-                          Edit
-                        </button>
-
-                        <button
-                          className={style.btnDelete}
-                          onClick={() => handleDelete(service._id)}
-                        >
-                          Delete
-                        </button>
-                      </div>
+                      <td>{service.name}</td>
                     )}
-                  </td>
-                </tr>
-              );
-            })}
+
+                    {isEditing ? (
+                      <td>
+                        <input
+                          value={editedService.description}
+                          className={style.editInput}
+                          onChange={(e) =>
+                            setEditedService({
+                              ...editedService,
+                              description: e.target.value,
+                            })
+                          }
+                        />
+                      </td>
+                    ) : (
+                      <td>{service.description}</td>
+                    )}
+
+                    {isEditing ? (
+                      <td>
+                        <input
+                          value={editedService.category}
+                          className={style.editInput}
+                          onChange={(e) =>
+                            setEditedService({
+                              ...editedService,
+                              category: e.target.value,
+                            })
+                          }
+                        />
+                      </td>
+                    ) : (
+                      <td>{service.category}</td>
+                    )}
+                    {isEditing ? (
+                      <td>
+                        <input
+                          value={editedService.price}
+                          className={style.editInput}
+                          onChange={(e) =>
+                            setEditedService({
+                              ...editedService,
+                              price: e.target.value,
+                            })
+                          }
+                        />
+                      </td>
+                    ) : (
+                      <td style={{ paddingLeft: "70px" }}>{service.price}</td>
+                    )}
+
+                    {isEditing ? (
+                      <td>
+                        <input
+                          value={editedService.rate}
+                          className={style.editInput}
+                          onChange={(e) =>
+                            setEditedService({
+                              ...editedService,
+                              rate: e.target.value,
+                            })
+                          }
+                        />
+                      </td>
+                    ) : (
+                      <td>{service.rate}</td>
+                    )}
+
+                    {isEditing ? (
+                      <td>
+                        <input
+                          value={editedService.image}
+                          className={style.editInput}
+                          onChange={(e) =>
+                            setEditedService({
+                              ...editedService,
+                              image: e.target.value,
+                            })
+                          }
+                        />
+                      </td>
+                    ) : (
+                      <td className={style.imageCell}>
+                        <span className={style.truncate} title={service.image}>
+                          {service.image}
+                        </span>
+                      </td>
+                    )}
+
+                    <td>
+                      {isEditing ? (
+                        <div className={style.actionBtns}>
+                          <button
+                            className={style.btnEdit}
+                            onClick={() => setEditingId(null)}
+                          >
+                            cancel
+                          </button>
+
+                          <button
+                            className={style.btnSave}
+                            onClick={() => handleSaveEdit(service._id)}
+                          >
+                            save
+                          </button>
+                        </div>
+                      ) : (
+                        <div className={style.actionBtns}>
+                          <button
+                            className={style.btnEdit}
+                            onClick={() => {
+                              (setEditingId(service._id),
+                                setEditedService({
+                                  name: service.name,
+                                  image: service.image,
+                                  description: service.description,
+                                  rate: service.rate,
+                                  price: service.price,
+                                  category: service.category,
+                                }));
+                            }}
+                          >
+                            Edit
+                          </button>
+
+                          <button
+                            className={style.btnDelete}
+                            onClick={() => handleDelete(service._id)}
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      )}
+                    </td>
+                  </tr>
+                );
+              })}
           </tbody>
         </table>
       </div>

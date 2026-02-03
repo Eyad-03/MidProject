@@ -4,7 +4,7 @@ import icon2 from "../image/icon.png";
 import api from "../api";
 import toast from "react-hot-toast";
 import { CgProfile } from "react-icons/cg";
-import { useState } from "react"; // Import useState to manage dropdown visibility
+import { useState } from "react"; 
 
 function NavBar() {
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ function NavBar() {
 
   console.log(user);
 
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // Manage dropdown visibility
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false); 
 
   const handleLogout = async () => {
     try {
@@ -27,7 +27,7 @@ function NavBar() {
   };
 
   const toggleDropdown = () => {
-    setIsDropdownOpen((prev) => !prev); // Toggle dropdown visibility
+    setIsDropdownOpen((prev) => !prev); 
   };
 
   return (

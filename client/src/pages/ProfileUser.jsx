@@ -2,7 +2,7 @@ import { useState } from "react";
 import NavBar from "../components/NavBar";
 import style from "../style/ProfileUser.module.css";
 import api from "../api";
-import toast from "react-hot-toast"; // Assuming you have this in place for notifications
+import toast from "react-hot-toast"; 
 
 function ProfileUser() {
   const userInfo = localStorage.getItem("user");
@@ -22,7 +22,7 @@ function ProfileUser() {
   });
 
   const handlePassword = async (e) => {
-    e.preventDefault(); // Prevent form default behavior (reloading page)
+    e.preventDefault(); 
     try {
       const res = await api.put(`/updatePassword/${user._id}`, change);
 
@@ -32,7 +32,6 @@ function ProfileUser() {
         toast.success("password updated successfully");
       }
 
-      // Reset password fields
       setChange({
         ...change,
         oldPassword: "",

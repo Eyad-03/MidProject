@@ -5,7 +5,6 @@
   align-items: flex-start;
   padding-top: 60px;
 
-  /* خلفية مناسبة للتصميم الأخضر */
   background:
     radial-gradient(
       circle at top left,
@@ -17,7 +16,7 @@
       rgba(78, 225, 193, 0.14),
       transparent 55%
     ),
-    #f8fafc; /* رمادي فاتح بدل الأبيض */
+    #f8fafc; 
 }
 
 .grid_container {

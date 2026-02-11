@@ -2,9 +2,10 @@ import express from "express";
 import {
   createService,
   getAllService,
-  getServiceById,
   deleteService,
   updateService,
+  getServiceCategoryById,
+  getServiceProviderById
 } from "../controllers/service.controller.js";
 import { adminOnly } from "../middleware/admin.Middleware.js";
 import { protect } from "../middleware/auth.Middleware.js";
@@ -13,12 +14,14 @@ const router = express.Router();
 
 router.get("/getAllService", protect, getAllService);
 
-router.post("/createService", protect, adminOnly, createService);
+router.post("/createService", protect,  createService);
 
-router.get("/getServiceById/:id", protect, getServiceById);
+router.get("/getServiceCategoryById/:id", protect, getServiceCategoryById);
+
+router.get("/getServiceProviderById/:id", protect, getServiceProviderById);
 
 router.put("/updateService/:id", protect, adminOnly, updateService);
 
-router.delete("/deleteService/:id", protect, adminOnly, deleteService);
+router.delete("/deleteService/:id", protect, deleteService);
 
 export default router;

@@ -111,11 +111,30 @@ export const updateInfo = async (req, res) => {
       id,
       {
         name,
-        email
+        email,
       },
       { new: true },
     );
 
+    return res.status(200).json({ message: "Change Profile Successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+export const updateInfoProvider = async (req, res) => {
+  const { name, major } = req.body;
+  const { id } = req.params;
+
+  try {
+    const user = await User.findById(id);
+    if (!user) return res.status(404).json({ message: "user not found!" });
+
+    const updateProvider = await User.findByIdAndUpdate(
+      id,
+      { name, major },
+      { new: true },
+    );
     return res.status(200).json({ message: "Change Profile Successfully" });
   } catch (error) {
     res.status(500).json({ message: error.message });

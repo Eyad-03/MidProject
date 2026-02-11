@@ -2,10 +2,27 @@ import mongoose from "mongoose";
 //name, desc, price, thumbnail, stock,
 const serviceSchema = new mongoose.Schema(
   {
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User", 
+      required: true, 
+    },
+
     name: {
       type: String,
       required: true,
     },
+
+    role: {
+      type: String,
+      required: true,
+    },
+
+    major :{
+      type: String,
+      required: true,
+    },
+
     description: {
       type: String,
     },
@@ -29,7 +46,7 @@ const serviceSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
-  }
+  },
 );
 const Service = mongoose.model("Service", serviceSchema);
 

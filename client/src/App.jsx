@@ -16,6 +16,12 @@ import MainAdmin from './components/Admin/MainAdmin';
 import UpdateCategory from "./components/Admin/UpdateCategory";
 import UpdateService from "./components/Admin/UpdateService";
 import ProfileUser from "./pages/ProfileUser";
+import ReviewPage from "./pages/ReviewPage";
+import Review from "./components/Admin/Review";
+import ServiceDetails from "./pages/ServiceDetails";
+import UpdateServiceProvider from "./components/Provider/UpdateServiceProvider";
+import RequestService from "./components/Provider/RequestService";
+
 function App() {
   return (
     <>
@@ -26,11 +32,14 @@ function App() {
           <Route path="/home" element={<HomePage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/profileuser" element={<ProfileUser/>} />
+          <Route path="/review" element={<ReviewPage/>} />
           <Route path="/signin" element={<SigninPage />} />
           <Route path="/service/:id" element={<ServicePage />} />
+          <Route path="/serviceDetail" element={<ServiceDetails />} />
           <Route path="/dashboardAdmin" element={<DashboardAdmin />}>
             <Route path="" element={<MainAdmin />} />
             <Route path="setting" element={<MainAdmin />} />
+            <Route path="review" element={<Review />} />
             <Route path="updateUser" element={<UpdateUser />} />
             <Route path="updateCategory" element={<UpdateCategory />} />
             <Route path="updateService" element={<UpdateService />} />
@@ -39,6 +48,8 @@ function App() {
           <Route path="/dashboardProvider" element={<DashboardProvider />}>
             <Route path="" element={<MainProvider />} />
             <Route path="setting" element={<MainProvider />} />
+            <Route path="UpdateServiceProvider" element={<UpdateServiceProvider />} />
+            <Route path="request" element={<RequestService />} />
             <Route path="profile" element={<Profile />} />
           </Route>
         </Routes>

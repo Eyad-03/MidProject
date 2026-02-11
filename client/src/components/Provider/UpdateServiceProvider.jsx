@@ -3,7 +3,7 @@ import api from "../../api";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
-function UpdateService() {
+function UpdateServiceProvider() {
   const userd = localStorage.getItem("user");
   const userInfo = JSON.parse(userd);
   console.log(userInfo);
@@ -13,7 +13,7 @@ function UpdateService() {
   const [editingId, setEditingId] = useState(null);
   const [query, setQuery] = useState("");
   const [addService, setAddService] = useState({
-    user:"",
+    user: userInfo._id,
     description: "",
     price: "",
     image: "",
@@ -23,11 +23,11 @@ function UpdateService() {
   const [isAdd, setIsAdd] = useState(null);
   const fetchservices = async () => {
     try {
-      const res = await api.get("/getAllService");
+      const res = await api.get(`/getServiceProviderById/${userInfo._id}`);
       if (res.status !== 200) {
         toast.error(res.data.message);
       }
-      console.log(res.data)
+      console.log(res.data);
       setServices(res.data.services);
       toast.success("fetch service successfully");
     } catch {
@@ -87,7 +87,7 @@ function UpdateService() {
       fetchservices();
 
       setAddService({
-        name: "",
+        user: userInfo._id,
         description: "",
         price: "",
         image: "",
@@ -96,7 +96,7 @@ function UpdateService() {
       });
     } catch (err) {
       const errorMsg = err.response?.data?.message || "Failed to add service";
-    toast.error(errorMsg);
+      toast.error(errorMsg);
     }
   };
 
@@ -131,7 +131,8 @@ function UpdateService() {
             {services
               .filter(
                 (service) =>
-                  service.name && service.name.toLowerCase().includes(query.toLowerCase()) ||
+                  (service.name &&
+                    service.name.toLowerCase().includes(query.toLowerCase())) ||
                   service.price.includes(query),
               )
               .map((service) => {
@@ -312,13 +313,10 @@ function UpdateService() {
             <input
               type="text"
               placeholder="Enter User name"
-              value={addService.user}
-              onChange={(e) =>
-                setAddService({ ...addService, user: e.target.value })
-              }
+              defaultValue={userInfo._id}       
+              disabled={true}
             />
           </div>
-
 
           <div className={style.formGroup}>
             <label>Image</label>
@@ -388,4 +386,4 @@ function UpdateService() {
   );
 }
 
-export default UpdateService;
+export default UpdateServiceProvider;

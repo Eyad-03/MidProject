@@ -1,17 +1,31 @@
+import mongoose from "mongoose";
 import Service from "../models/service.Model.js";
+import User from "../models/user.Model.js";
 
 //create a product
 export const createService = async (req, res) => {
-  const { name, description, price, image, rate, category } = req.body;
+  const { user, description, price, image, rate, category } = req.body;
+  
   try {
-    if (!name || !price || !category || !image || !rate|| !description ) {
+    if (!user || !price || !category || !image || !rate || !description) {
       return res
         .status(400)
         .json({ message: "Name, price, image, and rate are required" });
     }
-    
+
+if (!mongoose.Types.ObjectId.isValid(user)) {
+      return res.status(400).json({ message: "Invalid User ID format" });
+    }
+
+    const currentUser = await User.findById(user);
+    if (!currentUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
     const newService = await Service.create({
-      name,
+      user: currentUser._id,
+      name: currentUser.name,
+      role:currentUser.role,
+      major:currentUser.major,
       description,
       price,
       image,
@@ -44,11 +58,29 @@ export const getAllService = async (req, res) => {
   }
 };
 
-//get by id
-export const getServiceById = async (req, res) => {
+
+export const getServiceProviderById = async (req, res) => {
   const { id } = req.params;
   try {
-   const services = await Service.find({ category: id });
+    const services = await Service.find({ user: id });
+    if (!services) {
+      return res.status(404).json({ message: "Service not found" });
+    }
+    return res
+      .status(200)
+      .json({ services, message: "Service fetched successfully" });
+    //200 ok
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching product", error });
+  }
+};
+
+
+//get by id
+export const getServiceCategoryById = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const services = await Service.find({ category: id });
     if (!services) {
       return res.status(404).json({ message: "Service not found" });
     }
@@ -82,15 +114,15 @@ export const deleteService = async (req, res) => {
 //update by id
 export const updateService = async (req, res) => {
   const { id } = req.params;
-  const { name, description, price, image, rate,category } = req.body;
+  const { name, description, price, image, rate, category } = req.body;
   try {
     const updatedData = {};
     if (name !== undefined) updatedData.name = name;
     if (description !== undefined) updatedData.description = description;
-    if (price !== undefined) updatedData.price = price
+    if (price !== undefined) updatedData.price = price;
     if (rate !== undefined) updatedData.rate = rate;
     if (image !== undefined) updatedData.image = image;
-     if (category !== undefined) updatedData.category = category;
+    if (category !== undefined) updatedData.category = category;
 
     const service = await Service.findByIdAndUpdate(id, updatedData, {
       new: true,

@@ -45,8 +45,8 @@ function HomePage() {
             <h1>WORKIQ</h1>
             <h2>FREELANCING MADE EASY !</h2>
             <p>
-              the ddeferint between hiring and expert the ddeferint between
-              hiring and expert the ddeferint between hiring and expert
+              the difference between hiring and expert the difference between
+              hiring and expert the difference between hiring and expert
             </p>
           </div>
 

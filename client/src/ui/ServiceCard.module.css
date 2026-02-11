@@ -126,10 +126,17 @@
   outline-offset: 2px;
 }
 
-.btn_apply button
+.btn_apply
 {
+display: flex;
+}
+
+.btn_apply a
+{
+text-align: center;
 width: 100%;
 padding: 10px;
+text-decoration: none;
 border-radius: 8px;
 border: none;
 cursor: pointer;

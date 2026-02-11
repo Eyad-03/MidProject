@@ -4,6 +4,7 @@ import { useState } from "react";
 import api from "../api";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import logo from '../image/logo.png'
 
 function RegisterPage() {
   const [name, setName] = useState("");
@@ -11,6 +12,7 @@ function RegisterPage() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [role, setRole] = useState("user");
+  const [major,setMajor]=useState('');
 
   const navigate = useNavigate();
 
@@ -23,6 +25,7 @@ function RegisterPage() {
         password,
         confirmPassword,
         role,
+        major:major || 'User'
       });
       if (res.status !== 201) {
         toast.error(res.data.message);
@@ -93,7 +96,17 @@ function RegisterPage() {
                   <option value="provider">Provider</option>
                 </select>
               </div>
-
+              {role == "provider" && (
+                <div className={style.field}>
+                  <label>Major</label>
+                  <textarea
+                    type="text"
+                    value={major}
+                    onChange={(e) => setMajor(e.target.value)}
+                  >
+                  </textarea>
+                </div>
+              )}
               <button type="submit">Register</button>
             </form>
           </div>

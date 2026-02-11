@@ -19,7 +19,7 @@ console.log(id)
 
   const fetchService = async () => {
     try {
-      const res = await api.get(`/getServiceById/${id}`);
+      const res = await api.get(`/getServiceCategoryById/${id}`);
       console.log(res.data)
 
       if (res.status !== 200) {

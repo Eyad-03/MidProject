@@ -168,3 +168,113 @@
   background: rgba(14, 74, 74, 0.06);
 }
 
+.formContainer
+{
+  background-color: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 30px;
+  margin-top: 40px;
+  border: 1px solid #ddd;
+  transition: all 0.3s ease;
+  margin: auto;
+
+}
+
+.formContainer:hover
+{
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.formContainer form 
+{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.formContainer label {
+  font-weight: 600;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.formContainer input
+{
+  padding: 12px 15px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+    transition: all 0.3s ease;
+  outline: none;
+}
+
+.formContainer input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.formContainer input:disabled {
+  background-color: #f1f1f1;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.buttonContainer
+{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 25px;
+}
+
+.buttonContainer button
+{
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.buttonContainer button:hover {
+  background-color: #0056b3;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.changeButton {
+  background-color: #28a745;
+}
+
+.changeButton:hover {
+  background-color: #218838;
+}
+
+.saveButton {
+  background-color: #ffc107 !important;
+  color: #333;
+}
+
+.saveButton:hover {
+  background-color: #e0a800 !important;
+}
+
+.sectionTitle
+{
+  font-size: 22px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: #333;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 10px;
+}

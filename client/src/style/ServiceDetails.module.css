@@ -1,0 +1,196 @@
+/* Existing Profile Container Styles */
+.container_profile {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 22px;
+  width: min(1100px, 100%);
+  margin: 24px auto;
+  padding: 22px;
+  background: linear-gradient(180deg, rgba(14, 74, 74, 0.05), rgba(255, 255, 255, 0.92));
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  border-radius: 18px;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.1), 0 3px 10px rgba(15, 23, 42, 0.06);
+}
+
+.provider_details { padding: 10px 6px; }
+
+.provider_details p {
+  margin: 0 0 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(14, 74, 74, 0.1);
+  border: 1px solid rgba(14, 74, 74, 0.18);
+  color: rgba(14, 74, 74, 0.92);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.provider_details h1 {
+  margin: 6px 0 10px;
+  color: #0f172a;
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 800;
+}
+
+.feedback {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.feedback span {
+  padding: 14px;
+  border-radius: 14px;
+  background: white;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+}
+
+.image_provider {
+  position: relative;
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.image_provider img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 6px solid white;
+  box-shadow: 0 18px 30px rgba(15, 23, 42, 0.18);
+}
+
+.contact_provider { display: flex; gap: 10px; }
+.contact_provider span {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  border: 1px solid rgba(14, 74, 74, 0.2);
+  background: white;
+  transition: all 0.2s ease;
+}
+
+/* NEW SERVICE SECTION STYLES */
+.service_info_container {
+  width: min(1100px, 100%);
+  margin: 0 auto 50px;
+  padding: 0 22px;
+}
+
+.service_content_grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.service_main_image {
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+  height: 400px;
+}
+
+.service_main_image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.info_card {
+  background: white;
+  padding: 40px;
+  border-radius: 22px;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.info_card h3 {
+  color: #0f172a;
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+
+.description {
+  color: #64748b;
+  line-height: 1.8;
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+.meta_grid {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 35px;
+  padding: 20px;
+  background: #f8fafc;
+  border-radius: 16px;
+}
+
+.meta_item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.meta_item label {
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #94a3b8;
+  letter-spacing: 0.5px;
+}
+
+.meta_item span {
+  font-size: 18px;
+  font-weight: 800;
+  color: #0e4a4a;
+}
+
+.book_now_btn {
+  width: 100%;
+  padding: 18px;
+  background: #0e4a4a;
+  color: white;
+  border: none;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.book_now_btn:hover {
+  background: #0a3535;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(14, 74, 74, 0.25);
+}
+
+/* Tablet/Mobile Responsive */
+@media (max-width: 900px) {
+  .container_profile, .service_content_grid {
+    grid-template-columns: 1fr;
+  }
+  .service_main_image {
+    height: 300px;
+  }
+}

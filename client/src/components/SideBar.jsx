@@ -9,7 +9,7 @@ function SideBar() {
   const userInfo = localStorage.getItem("user");
   const user = JSON.parse(userInfo);
 
-  console.log(user)
+  console.log(user);
 
   const handleLogout = async () => {
     try {
@@ -28,13 +28,24 @@ function SideBar() {
       <nav className={style.menu}>
         <ul className={style.list_sidebar}>
           <li>
-            <button onClick={() => navigate("/dashboardAdmin/profile")}>Profile</button>
+            <button onClick={() => navigate("/dashboardAdmin/profile")}>
+              Profile
+            </button>
           </li>
           <li>
-            <button onClick={() => navigate("/dashboardAdmin/setting")}>Settings</button>
+            <button onClick={() => navigate("/dashboardAdmin/setting")}>
+              Settings
+            </button>
           </li>
           <li>
-            <button onClick={() => navigate("message")}>Messages</button>
+            <button onClick={() => navigate("/dashboardAdmin/review")}>
+              Messages
+            </button>
+          </li>
+          <li>
+            <button onClick={() => navigate("/dashboardProvider/request")}>
+              Request
+            </button>
           </li>
           <li>
             <button onClick={handleLogout}>Logout</button>

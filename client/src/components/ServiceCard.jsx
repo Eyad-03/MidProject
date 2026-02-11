@@ -1,7 +1,10 @@
 import style from "../ui/ServiceCard.module.css";
-import web from "../image/web.png";
+import { Link, useNavigate } from "react-router-dom";
 
 function ServiceCard({service}) {
+
+  const navigate =useNavigate()
+
   return (
     <>
       <div className={style.serviceCard}>
@@ -19,7 +22,7 @@ function ServiceCard({service}) {
             <p>{service.price}</p>
           </div>
           <div className={style.btn_apply}>
-            <button>Apply</button>
+            <Link to='/serviceDetail' state={{service}}>Apply</Link>
           </div>
         </div>
       </div>

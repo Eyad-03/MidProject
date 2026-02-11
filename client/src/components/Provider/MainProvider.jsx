@@ -1,6 +1,7 @@
 import style from "../../style/MainProvider.module.css";
+import { useNavigate } from "react-router-dom";
 
-const ProviderCard = [
+/*const ProviderCard = [
   {
     name: "Website Landing Page Design",
     description: "Need a modern landing page for a startup marketplace.",
@@ -14,20 +15,29 @@ const ProviderCard = [
     price: "Budget: $80",
     category: "Category: Translation",
   },
+];*/
+
+const ProviderCard = [
+  {
+    name: "Update Services",
+    description: "Looking for professional translation of 10 pages document.",
+    path: "/dashboardProvider/UpdateServiceProvider",
+  },
 ];
 
 function MainProvider() {
+
+const navigate =useNavigate()
+
   return (
     <>
-      {/* Page Title */}
       <div className={style.header}>
         <h2>New Service Requests</h2>
         <p>Clients are looking for providers like you. Apply now.</p>
       </div>
 
-      {/* Requests Grid */}
-      <div className={style.requestsGrid}>
-        {/* Request Card */}
+      {/*   <div className={style.requestsGrid}>
+        
 
         {ProviderCard.map((item) => (
           <div className={style.card}>
@@ -41,6 +51,22 @@ function MainProvider() {
             </div>
 
             <button className={style.btn}>Apply Offer</button>
+          </div>
+        ))}
+      </div>*/}
+
+      <div className={style.requestsGrid}>
+        {/* Request Card */}
+
+        {ProviderCard.map((item) => (
+          <div className={style.card}>
+            <h3>{item.name}</h3>
+
+            <p className={style.desc}>{item.description}</p>
+
+            <button className={style.btn} onClick={() => navigate(item.path)}>
+              Controll
+            </button>
           </div>
         ))}
       </div>

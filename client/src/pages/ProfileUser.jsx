@@ -47,7 +47,7 @@ function ProfileUser() {
     e.preventDefault();
     try {
       const res = await api.put(`/updateInfo/${user._id}`, info);
-
+      console.log(res);
       if (res.status !== 200) {
         toast.error(res.data.message);
       } else {

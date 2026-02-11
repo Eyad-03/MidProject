@@ -3,7 +3,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 export const register = async (req, res) => {
-  const { name, email, password, confirmPassword, role } = req.body;
+  const { name, email, password, confirmPassword, role,major } = req.body;
   try {
     if (!name || !email | !password || !confirmPassword || !role) {
       return res.status(400).json({ message: "All field are required" });
@@ -41,6 +41,7 @@ export const register = async (req, res) => {
       email,
       password: hashPassword,
       role,
+      major
     });
     return res
       .status(201)
@@ -87,7 +88,7 @@ export const login = async (req, res) => {
 
     res.cookie("token", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production", //false in development
+      secure: process.env.NODE_ENV === "production", 
       sameSite: "Strict",
       maxAge: 3600000, // 1 hour
     });

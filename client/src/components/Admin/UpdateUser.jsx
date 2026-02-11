@@ -51,6 +51,7 @@ function UpdateUser() {
         <table className={style.adminTable}>
           <thead>
             <tr>
+              <th>Id</th>
               <th>Name</th>
               <th>Email</th>
               <th>Password</th>
@@ -69,6 +70,7 @@ function UpdateUser() {
 
               .map((user) => (
                 <tr key={user._id}>
+                  <td>{user._id}</td>
                   <td>{user.name}</td>
                   <td>{user.email}</td>
 

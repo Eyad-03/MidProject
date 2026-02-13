@@ -14,6 +14,7 @@ function UpdateService() {
   const [query, setQuery] = useState("");
   const [addService, setAddService] = useState({
     user:"",
+    name:"",
     description: "",
     price: "",
     image: "",
@@ -319,6 +320,17 @@ function UpdateService() {
             />
           </div>
 
+          <div className={style.formGroup}>
+            <label>Name</label>
+            <input
+              type="text"
+              placeholder="Enter image URL"
+              value={addService.name}
+              onChange={(e) =>
+                setAddService({ ...addService, name: e.target.value })
+              }
+            />
+          </div>
 
           <div className={style.formGroup}>
             <label>Image</label>

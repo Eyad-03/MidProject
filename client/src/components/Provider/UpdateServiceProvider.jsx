@@ -14,6 +14,7 @@ function UpdateServiceProvider() {
   const [query, setQuery] = useState("");
   const [addService, setAddService] = useState({
     user: userInfo._id,
+    name:"",
     description: "",
     price: "",
     image: "",
@@ -317,6 +318,19 @@ function UpdateServiceProvider() {
               disabled={true}
             />
           </div>
+
+          <div className={style.formGroup}>
+            <label>Name</label>
+            <input
+              type="text"
+              placeholder="Enter image URL"
+              value={addService.name}
+              onChange={(e) =>
+                setAddService({ ...addService, name: e.target.value })
+              }
+            />
+          </div>
+
 
           <div className={style.formGroup}>
             <label>Image</label>

@@ -4,7 +4,7 @@ import User from "../models/user.Model.js";
 
 //create a product
 export const createService = async (req, res) => {
-  const { user, description, price, image, rate, category } = req.body;
+  const { user,name, description, price, image, rate, category } = req.body;
   
   try {
     if (!user || !price || !category || !image || !rate || !description) {
@@ -23,9 +23,7 @@ if (!mongoose.Types.ObjectId.isValid(user)) {
     }
     const newService = await Service.create({
       user: currentUser._id,
-      name: currentUser.name,
-      role:currentUser.role,
-      major:currentUser.major,
+      name,
       description,
       price,
       image,
@@ -80,7 +78,7 @@ export const getServiceProviderById = async (req, res) => {
 export const getServiceCategoryById = async (req, res) => {
   const { id } = req.params;
   try {
-    const services = await Service.find({ category: id });
+    const services = await Service.find({ category: id }).populate("user","name role major");
     if (!services) {
       return res.status(404).json({ message: "Service not found" });
     }

@@ -14,7 +14,7 @@ export const createReview = async (req, res) => {
 
 export const getAllReviews = async (req, res) => {
   try {
-    const reviews = await Review.find();
+    const reviews = await Review.find().populate("userId","name");
     if (!reviews) return res.status(400).json({ message: "review is empty" });
     return res
       .status(200)

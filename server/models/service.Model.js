@@ -13,16 +13,6 @@ const serviceSchema = new mongoose.Schema(
       required: true,
     },
 
-    role: {
-      type: String,
-      required: true,
-    },
-
-    major :{
-      type: String,
-      required: true,
-    },
-
     description: {
       type: String,
     },

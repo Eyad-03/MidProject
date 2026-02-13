@@ -1,29 +1,57 @@
-import style from "../../style/MainProvider.module.css";
+import style from "../../style/Request.module.css";
 import api from "../../api";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { FiMail, FiCheck, FiX, FiDollarSign, FiTag, FiUser } from "react-icons/fi";
+import { HiOutlineDocumentText } from "react-icons/hi";
 
-const ProviderCard = [
-  {
-    name: "Website Landing Page Design",
-    description: "Need a modern landing page for a startup marketplace.",
-    price: "Budget: $150",
-    category: "Category: Design",
-  },
-
-  {
-    name: "Translation Arabic → English",
-    description: "Looking for professional translation of 10 pages document.",
-    price: "Budget: $80",
-    category: "Category: Translation",
-  },
-];
 
 function RequestService() {
 
   const [requests,setRequests]=useState([])
 
+  const handleStatus =async(id,status)=>
+  {
+    try
+    {
+      const res = await api.put(`/updateStatus/${id}`,{status})
 
+      if(res.status!==200)
+      {
+        toast.error('failed update status')
+      }
+
+      toast.success('update successfully')
+      
+    }
+
+    catch(err)
+    {
+      console.error(err.message)
+    }
+  }
+
+  const handleDeleteRequest =async(id)=>
+  {
+
+    try
+    {
+      const res =await api.delete(`/deleteRequest/${id}`)
+
+      if(res.status!==200)
+      {
+        toast.error('delete request failed')
+      }
+      fetchRequest()
+      toast.success('delete request successfully')
+    }
+
+    catch(err)
+    {
+      console.error(err.message)
+    }
+
+  }
 
   const fetchRequest = async () => {
     try {
@@ -45,23 +73,53 @@ function RequestService() {
 
   return (
     <>
+<div className={style.container}>
+      <h1 className={style.pageTitle}>My Request Service</h1>
+
       <div className={style.requestsGrid}>
         {requests.map((item) => (
-          <div className={style.card}>
-            <h3>{item.client.name}</h3>
-            <p className={style.desc}>{item.client.email}</p>
+          <div className={style.card} key={item._id}>
+            <h3>
+              <FiUser size={18} /> {item.client.name}
+            </h3>
+            
+            <p className={style.desc}>
+              <FiMail size={14} /> {item.client.email}
+            </p>
 
-            <p className={style.desc}>{item.description}</p>
+            <p className={style.desc}>
+              <HiOutlineDocumentText size={14} /> {item.service.name}
+            </p>
 
             <div className={style.meta}>
-              <span>{item.service.price}</span>
-              <span>{item.category}</span>
+              <span>
+                <FiDollarSign size={14} /> {item.service.price}
+              </span>
+              {item.category && (
+                <span>
+                  <FiTag size={14} /> {item.category}
+                </span>
+              )}
             </div>
 
-            <button className={style.btn}>Apply Offer</button>
+            <div className={style.btn_request}>
+              <button 
+                className={`${style.btn} ${style.btnAccept}`} 
+                onClick={() => handleStatus(item._id, true)}
+              >
+                <FiCheck /> Accept
+              </button>
+              <button 
+                className={`${style.btn} ${style.btnReject}`} 
+                onClick={() => handleDeleteRequest(item._id)}
+              >
+                <FiX /> Reject
+              </button>
+            </div>
           </div>
         ))}
       </div>
+    </div>
     </>
   );
 }

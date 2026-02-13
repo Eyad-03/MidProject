@@ -32,21 +32,33 @@ function SideBar() {
               Profile
             </button>
           </li>
-          <li>
-            <button onClick={() => navigate("/dashboardAdmin/setting")}>
-              Settings
-            </button>
-          </li>
-          <li>
-            <button onClick={() => navigate("/dashboardAdmin/review")}>
-              Messages
-            </button>
-          </li>
-          <li>
-            <button onClick={() => navigate("/dashboardProvider/request")}>
-              Request
-            </button>
-          </li>
+          {user.role === "admin" ? (
+            <li>
+              <button onClick={() => navigate("/dashboardAdmin/setting")}>
+                Settings
+              </button>
+            </li>
+          ) : (
+            <li>
+              <button onClick={() => navigate("/dashboardProvider/setting")}>
+                Settings
+              </button>
+            </li>
+          )}
+          {user.role === "admin" && (
+            <li>
+              <button onClick={() => navigate("/dashboardAdmin/review")}>
+                Messages
+              </button>
+            </li>
+          )}
+          {user.role === "provider" && (
+            <li>
+              <button onClick={() => navigate("/dashboardProvider/request")}>
+                Request
+              </button>
+            </li>
+          )}
           <li>
             <button onClick={handleLogout}>Logout</button>
           </li>

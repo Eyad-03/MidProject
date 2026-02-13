@@ -2,7 +2,7 @@ import api from "../../api";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import style from "../../style/Review.module.css";
-
+import { HiStar, HiCheck, HiTrash, HiUserCircle } from "react-icons/hi2";
 function Review() {
   const [reviews, setReviews] = useState([]);
 
@@ -51,40 +51,48 @@ function Review() {
 
   return (
     <>
+<div className={style.container}>
       <div className={style.header}>
         <h2>All Reviews</h2>
-        <p>Clients are looking for providers like you. Apply now.</p>
+        <p>Manage and moderate client feedback efficiently.</p>
       </div>
 
       <div className={style.requestsGrid}>
         {reviews.map((item) => (
           <div className={style.card} key={item._id}>
-            <h3>{item.userId}</h3>
+            <div className={style.cardHeader}>
+              <HiUserCircle className={style.userIcon} />
+              <div className={style.userInfo}>
+                <span className={style.userIdLabel}>User Name</span>
+                <h3>{item.userId.name}</h3>
+              </div>
+            </div>
+
+            <div className={style.ratingBadge}>
+              <HiStar className={style.starIcon} />
+              <span>{item.rating} / 5</span>
+            </div>
 
             <p className={style.desc}>{item.review}</p>
 
-            <div className={style.rating}>
-              <span>Rating : {item.rating} </span>{" "}
-              <span className={style.star}> ★ </span>{" "}
-            </div>
-
-            <ul className={style.btn_review}>
+            <div className={style.actions}>
               <button
                 className={style.btn_accept}
                 onClick={() => handleUpdateStatue(item._id, "accept")}
               >
-                Accept
+                <HiCheck /> Accept
               </button>
               <button
                 className={style.btn_reject}
                 onClick={() => handleDeleteReview(item._id)}
               >
-                Reject
+                <HiTrash /> Reject
               </button>
-            </ul>
+            </div>
           </div>
         ))}
       </div>
+    </div>
     </>
   );
 }

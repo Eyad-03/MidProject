@@ -1,0 +1,110 @@
+.requestsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 25px;
+  padding: 20px 0;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
+  border: 1px solid #f0f0f0;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+
+
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+  border-color: #00796b33;
+}
+
+
+.card h3 {
+  font-size: 20px;
+  font-weight: 800;
+  color: #2d3436;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.desc {
+  font-size: 14px;
+  color: #636e72;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.5;
+}
+
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 15px 0 20px 0;
+  padding-top: 15px;
+  border-top: 1px dashed #eee;
+}
+
+.meta span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #00796b;
+  background: #e0f2f1;
+  padding: 5px 12px;
+  border-radius: 20px;
+}
+
+/* Action Buttons */
+.btn_request {
+  display: flex;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.btn {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* Distinct Button Styles */
+.btnAccept {
+  background: #00796b;
+  color: white;
+}
+
+.btnAccept:hover {
+  background: #005f56;
+  box-shadow: 0 4px 12px rgba(0, 121, 107, 0.3);
+}
+
+.btnReject {
+  background: #fff0f0;
+  color: #d63031;
+}
+
+.btnReject:hover {
+  background: #fab1a0;
+  color: white;
+}

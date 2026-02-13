@@ -33,7 +33,7 @@ console.log(id)
 
 useEffect(()=>{
 fetchService()
-},[])
+},[id])
 
 
   return (

@@ -14,7 +14,7 @@ function ServiceCard({service}) {
 
         <div>
           <div className={style.details_provider1}>
-            <p>{service.name}</p>
+            <p>{service.user.name}</p>
             <p>{service.description}</p>
           </div>
           <div className={style.details_provider2}>

@@ -3,6 +3,7 @@ import { MdEmail, MdStar, MdPayments } from "react-icons/md";
 import { FaInstagram } from "react-icons/fa";
 import { FaRegMessage } from "react-icons/fa6";
 import { useLocation } from "react-router-dom";
+import log from '../image/log.png'
 import NavBar from "../components/NavBar";
 import api from "../api";
 import toast from "react-hot-toast";
@@ -10,7 +11,7 @@ import toast from "react-hot-toast";
 function ServiceDetails() {
   const { state } = useLocation();
   const { service } = state;
-
+console.log(service)
   const serviceId = service._id;
 
   const handleAddRequest = async (providerId) => {
@@ -31,9 +32,9 @@ function ServiceDetails() {
       {/* SECTION 1: Profile Header */}
       <div className={style.container_profile}>
         <div className={style.provider_details}>
-          <p>{service.role}</p>
-          <h1>{service.name}</h1>
-          <h6>{service.major}</h6>
+          <p>{service.user.role}</p>
+          <h1>{service.user.name}</h1>
+          <h6>{service.user.major}</h6>
           <div className={style.feedback}>
             <span>
               <h6>2,151</h6>
@@ -47,7 +48,7 @@ function ServiceDetails() {
         </div>
 
         <div className={style.image_provider}>
-          <img src={service.image} alt="Provider Profile" />
+          <img src={log} alt="Provider Profile" />
           <div className={style.contact_provider}>
             <span>
               <MdEmail color="rgba(14, 74, 74, 0.85)" />

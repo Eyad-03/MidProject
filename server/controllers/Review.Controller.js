@@ -14,7 +14,7 @@ export const createReview = async (req, res) => {
 
 export const getAllReviews = async (req, res) => {
   try {
-    const reviews = await Review.find().populate("userId","name");
+    const reviews = await Review.find().populate("userId", "name");
     if (!reviews) return res.status(400).json({ message: "review is empty" });
     return res
       .status(200)
@@ -42,7 +42,7 @@ export const updateReviewStatue = async (req, res) => {
   }
 };
 
-export const deleteReview = async (req,res) => {
+export const deleteReview = async (req, res) => {
   const { id } = req.params;
 
   try {
@@ -51,6 +51,25 @@ export const deleteReview = async (req,res) => {
     if (!review) return res.status(404).json({ message: "review not found" });
 
     return res.status(200).json({ message: "delete review successfully" });
+  } catch (err) {
+    res.status(500).json({ message: "Server Error", error: err.message });
+  }
+};
+
+export const getAllReviewAccepted = async (req, res) => {
+  try {
+    const acceptedReviews = await Review.find({ status: true }).populate(
+      "userId",
+      "name",
+    );
+
+    if (!acceptedReviews) {
+      return res.status(404).json({ message: "No Review Accept" });
+    }
+
+    return res
+      .status(200)
+      .json({ message: "The accepted review fetch", acceptedReviews });
   } catch (err) {
     res.status(500).json({ message: "Server Error", error: err.message });
   }

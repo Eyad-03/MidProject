@@ -78,7 +78,7 @@ export const getServiceProviderById = async (req, res) => {
 export const getServiceCategoryById = async (req, res) => {
   const { id } = req.params;
   try {
-    const services = await Service.find({ category: id }).populate("user","name role major");
+    const services = await Service.find({ category: id }).populate("user","name role major").populate('category','name');
     if (!services) {
       return res.status(404).json({ message: "Service not found" });
     }

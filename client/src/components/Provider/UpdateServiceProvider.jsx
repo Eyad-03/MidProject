@@ -89,6 +89,7 @@ function UpdateServiceProvider() {
 
       setAddService({
         user: userInfo._id,
+        name:"",
         description: "",
         price: "",
         image: "",

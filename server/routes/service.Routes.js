@@ -20,7 +20,7 @@ router.get("/getServiceCategoryById/:id", protect, getServiceCategoryById);
 
 router.get("/getServiceProviderById/:id", protect, getServiceProviderById);
 
-router.put("/updateService/:id", protect, adminOnly, updateService);
+router.put("/updateService/:id", protect, updateService);
 
 router.delete("/deleteService/:id", protect, deleteService);
 

@@ -75,10 +75,13 @@ function Review() {
 
             <p className={style.desc}>{item.review}</p>
 
+            <p className={style.desc}>{item.createdAt}</p>
+
             <div className={style.actions}>
               <button
                 className={style.btn_accept}
                 onClick={() => handleUpdateStatue(item._id, "accept")}
+                
               >
                 <HiCheck /> Accept
               </button>

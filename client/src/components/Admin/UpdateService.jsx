@@ -88,6 +88,7 @@ function UpdateService() {
       fetchservices();
 
       setAddService({
+        user:"",
         name: "",
         description: "",
         price: "",

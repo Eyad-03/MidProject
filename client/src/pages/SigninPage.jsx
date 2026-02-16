@@ -3,23 +3,22 @@ import test from "../image/test.png";
 import { useState } from "react";
 import api from "../api";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 
 function SigninPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-const navigate =useNavigate()
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
-      const res =await api.post("/auth/login", { email, password });
+      const res = await api.post("/auth/login", { email, password });
 
       if (res.status !== 200) {
         toast.error(res.data.message);
-        
       }
       const { token, user } = res.data;
       localStorage.setItem("token", token);
@@ -42,7 +41,7 @@ const navigate =useNavigate()
         <div className={style.grid_container}>
           <div className={style.grid1_register}>
             <div className={style.logo}>
-              <h3>WorkiQ</h3>
+              <h3 style={{cursor:'pointer'}} onClick={()=>navigate('/home')}>WorkiQ</h3>
             </div>
             <p>By registering, you will be able to join our world!</p>
 
@@ -66,6 +65,7 @@ const navigate =useNavigate()
               </div>
 
               <button type="submit">Sign in</button>
+              <Link to='/register'>dont have account ?</Link>
             </form>
           </div>
 

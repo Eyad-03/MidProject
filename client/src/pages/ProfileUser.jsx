@@ -2,7 +2,7 @@ import { useState } from "react";
 import NavBar from "../components/NavBar";
 import style from "../style/ProfileUser.module.css";
 import api from "../api";
-import toast from "react-hot-toast"; 
+import toast from "react-hot-toast";
 
 function ProfileUser() {
   const userInfo = localStorage.getItem("user");
@@ -12,8 +12,8 @@ function ProfileUser() {
   const [show, setShow] = useState(false);
   const [showDetail, setDetail] = useState(false);
   const [info, setInfo] = useState({
-        name: ""||user.name,
-        email: ""||user.email
+    name: "" || user.name,
+    email: "" || user.email,
   });
   const [change, setChange] = useState({
     oldPassword: "",
@@ -22,7 +22,7 @@ function ProfileUser() {
   });
 
   const handlePassword = async (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     try {
       const res = await api.put(`/updatePassword/${user._id}`, change);
 
@@ -57,8 +57,7 @@ function ProfileUser() {
       setInfo({
         ...info,
         name: "",
-        email: ""
-       
+        email: "",
       });
     } catch (err) {
       console.log(err);
@@ -72,7 +71,6 @@ function ProfileUser() {
       <div className={style.container}>
         <h2 className={style.header}>Profile Settings</h2>
 
-        {/* User Information Section */}
         <div className={style.formContainer}>
           <h3 className={style.sectionTitle}>User Information</h3>
           <form onSubmit={handleDetails}>
@@ -110,7 +108,6 @@ function ProfileUser() {
           </div>
         </div>
 
-        {/* Password Change Section */}
         <div className={style.formContainer}>
           <h3 className={style.sectionTitle}>Change Password</h3>
           <form onSubmit={handlePassword}>

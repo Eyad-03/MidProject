@@ -1,7 +1,6 @@
-
 body {
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
   min-height: 100vh;
@@ -16,8 +15,6 @@ body {
   margin: 0 auto;
   animation: fadeIn 0.5s ease-in-out;
 }
-
-
 
 .formContainer {
   background-color: #ffffff;
@@ -147,3 +144,64 @@ body {
   margin-top: 5px;
 }
 
+@media (max-width: 768px) {
+  .container {
+    padding: 20px 15px;
+    max-width: 95%;
+  }
+
+  .header {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .formContainer {
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .sectionTitle {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 15px 10px;
+  }
+
+  .header {
+    font-size: 22px;
+  }
+
+  .formContainer {
+    padding: 15px;
+    border-radius: 8px;
+  }
+
+  .sectionTitle {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .formContainer label {
+    font-size: 14px;
+  }
+
+  .formContainer input {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .buttonContainer {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+
+  .buttonContainer button {
+    width: 100%;
+    font-size: 15px;
+    padding: 10px;
+  }
+}

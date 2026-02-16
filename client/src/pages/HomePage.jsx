@@ -10,7 +10,12 @@ import office from "../image/office.png";
 import api from "../api";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { FaStar, FaQuoteLeft, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import {
+  FaStar,
+  FaQuoteLeft,
+  FaChevronLeft,
+  FaChevronRight,
+} from "react-icons/fa";
 import { FaCheckCircle } from "react-icons/fa";
 import { FaArrowTrendUp } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
@@ -48,23 +53,26 @@ function HomePage() {
     }
   };
 
-const reviewsPerPage = 3;
+  const reviewsPerPage = 3;
 
-const nextReviews = () => {
-  // If moving forward exceeds length, wrap back to 0
-  setCurrentIndex((prevIndex) => 
-    prevIndex + reviewsPerPage >= reviews.length ? 0 : prevIndex + reviewsPerPage
-  );
-};
+  const nextReviews = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex + reviewsPerPage >= reviews.length
+        ? 0
+        : prevIndex + reviewsPerPage,
+    );
+  };
 
-const prevReviews = () => {
-  // If moving back goes below 0, wrap to the last possible set of 3
-  setCurrentIndex((prevIndex) => 
-    prevIndex - reviewsPerPage < 0 
-      ? Math.max(0, Math.floor((reviews.length - 1) / reviewsPerPage) * reviewsPerPage) 
-      : prevIndex - reviewsPerPage
-  );
-};
+  const prevReviews = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex - reviewsPerPage < 0
+        ? Math.max(
+            0,
+            Math.floor((reviews.length - 1) / reviewsPerPage) * reviewsPerPage,
+          )
+        : prevIndex - reviewsPerPage,
+    );
+  };
 
   useEffect(() => {
     fetchCategory();
@@ -186,48 +194,59 @@ const prevReviews = () => {
         </div>
       </section>
 
-<section className={style.reviews_section}>
-      <h2>Customer Reviews</h2>
-      
-      <div className={style.carousel_wrapper}>
-        <button className={style.nav_button} onClick={prevReviews}>
-          <FaChevronLeft />
-        </button>
+      <section className={style.reviews_section}>
+        <h2>Customer Reviews</h2>
 
-        <div className={style.reviews_grid_container}>
-          {reviews.length > 0 ? (
-            reviews.slice(currentIndex, currentIndex + reviewsPerPage).map((rev) => (
-              <div key={rev._id} className={style.review_card_dynamic}>
-                <div className={style.quote_icon}><FaQuoteLeft /></div>
-                <div className={style.rating_container}>
-                  <FaStar className={style.star_icon} />
-                  <span>{rev.rating} / 5</span>
-                </div>
-                <p className={style.review_text}>"{rev.review}"</p>
-                <h4 className={style.user_name}>— {rev.userId?.name || "Anonymous"}</h4>
-              </div>
-            ))
-          ) : (
-            <p>No reviews available yet.</p>
-          )}
+        <div className={style.carousel_wrapper}>
+          <button className={style.nav_button} onClick={prevReviews}>
+            <FaChevronLeft />
+          </button>
+
+          <div className={style.reviews_grid_container}>
+            {reviews.length > 0 ? (
+              reviews
+                .slice(currentIndex, currentIndex + reviewsPerPage)
+                .map((rev) => (
+                  <div key={rev._id} className={style.review_card_dynamic}>
+                    <div className={style.quote_icon}>
+                      <FaQuoteLeft />
+                    </div>
+                    <div className={style.rating_container}>
+                      <FaStar className={style.star_icon} />
+                      <span>{rev.rating} / 5</span>
+                    </div>
+                    <p className={style.review_text}>"{rev.review}"</p>
+                    <h4 className={style.user_name}>
+                      — {rev.userId?.name || "Anonymous"}
+                    </h4>
+                  </div>
+                ))
+            ) : (
+              <p>No reviews available yet.</p>
+            )}
+          </div>
+
+          <button className={style.nav_button} onClick={nextReviews}>
+            <FaChevronRight />
+          </button>
         </div>
 
-        <button className={style.nav_button} onClick={nextReviews}>
-          <FaChevronRight />
-        </button>
-      </div>
-
-      {/* Optional: Pagination dots for groups of 3 */}
-      <div className={style.dots_container}>
-        {Array.from({ length: Math.ceil(reviews.length / reviewsPerPage) }).map((_, index) => (
-          <span 
-            key={index} 
-            className={currentIndex === index * reviewsPerPage ? style.dot_active : style.dot}
-            onClick={() => setCurrentIndex(index * reviewsPerPage)}
-          />
-        ))}
-      </div>
-    </section>
+        <div className={style.dots_container}>
+          {Array.from({
+            length: Math.ceil(reviews.length / reviewsPerPage),
+          }).map((_, index) => (
+            <span
+              key={index}
+              className={
+                currentIndex === index * reviewsPerPage
+                  ? style.dot_active
+                  : style.dot
+              }
+              onClick={() => setCurrentIndex(index * reviewsPerPage)}
+            />
+          ))}
+        </div>
+      </section>
     </>
   );
 }

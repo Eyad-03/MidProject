@@ -105,10 +105,8 @@ function UpdateCategory() {
 
           <tbody>
             {categories
-              .filter(
-                (category) =>
-                  category.name.toLowerCase().includes(query.toLowerCase()) 
-                 
+              .filter((category) =>
+                category.name.toLowerCase().includes(query.toLowerCase()),
               )
               .map((category) => {
                 const isEditing = editingId === category._id;

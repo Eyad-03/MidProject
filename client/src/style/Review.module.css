@@ -26,7 +26,9 @@
   background: #ffffff;
   border-radius: 20px;
   padding: 24px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 2px 4px -1px rgba(0, 0, 0, 0.03);
   border: 1px solid #edf2f7;
   display: flex;
   flex-direction: column;
@@ -51,16 +53,14 @@
   color: #cbd5e0;
 }
 
-.userInfo
-{
+.userInfo {
   line-height: 1.5;
 }
 
 .userInfo h3 {
   font-size: 14px;
   color: #2d3748;
-  font-family: monospace; /* IDs usually look better in mono */
-  margin: 0;
+  font-family: monospace;
 }
 
 .userIdLabel {
@@ -104,7 +104,8 @@
   margin-top: auto;
 }
 
-.btn_accept, .btn_reject {
+.btn_accept,
+.btn_reject {
   flex: 1;
   display: flex;
   align-items: center;
@@ -139,3 +140,63 @@
   color: white;
 }
 
+@media (max-width: 1024px) {
+  .container {
+    padding: 15px;
+  }
+
+  .requestsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 12px;
+  }
+
+  .header h2 {
+    font-size: 24px;
+  }
+
+  .header p {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .requestsGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .card {
+    padding: 18px;
+  }
+
+  .userIcon {
+    font-size: 32px;
+  }
+
+  .actions {
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  .btn_accept,
+  .btn_reject {
+    padding: 12px 8px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 380px) {
+  .actions {
+    flex-direction: column;
+  }
+
+  .btn_accept,
+  .btn_reject {
+    width: 100%;
+  }
+}

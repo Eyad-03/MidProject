@@ -22,7 +22,7 @@ function Review() {
 
   const handleDeleteReview = async (id) => {
     try {
-      const res =await api.delete(`/deleteReview/${id}`);
+      const res = await api.delete(`/deleteReview/${id}`);
       if (res.status !== 200) toast.error("delete review failed");
 
       toast.success(res.data.message);
@@ -51,51 +51,50 @@ function Review() {
 
   return (
     <>
-<div className={style.container}>
-      <div className={style.header}>
-        <h2>All Reviews</h2>
-        <p>Manage and moderate client feedback efficiently.</p>
-      </div>
+      <div className={style.container}>
+        <div className={style.header}>
+          <h2>All Reviews</h2>
+          <p>Manage and moderate client feedback efficiently.</p>
+        </div>
 
-      <div className={style.requestsGrid}>
-        {reviews.map((item) => (
-          <div className={style.card} key={item._id}>
-            <div className={style.cardHeader}>
-              <HiUserCircle className={style.userIcon} />
-              <div className={style.userInfo}>
-                <span className={style.userIdLabel}>User Name</span>
-                <h3>{item.userId.name}</h3>
+        <div className={style.requestsGrid}>
+          {reviews.map((item) => (
+            <div className={style.card} key={item._id}>
+              <div className={style.cardHeader}>
+                <HiUserCircle className={style.userIcon} />
+                <div className={style.userInfo}>
+                  <span className={style.userIdLabel}>User Name</span>
+                  <h3>{item.userId.name}</h3>
+                </div>
+              </div>
+
+              <div className={style.ratingBadge}>
+                <HiStar className={style.starIcon} />
+                <span>{item.rating} / 5</span>
+              </div>
+
+              <p className={style.desc}>{item.review}</p>
+
+              <p className={style.desc}>{item.createdAt}</p>
+
+              <div className={style.actions}>
+                <button
+                  className={style.btn_accept}
+                  onClick={() => handleUpdateStatue(item._id, "accept")}
+                >
+                  <HiCheck /> Accept
+                </button>
+                <button
+                  className={style.btn_reject}
+                  onClick={() => handleDeleteReview(item._id)}
+                >
+                  <HiTrash /> Reject
+                </button>
               </div>
             </div>
-
-            <div className={style.ratingBadge}>
-              <HiStar className={style.starIcon} />
-              <span>{item.rating} / 5</span>
-            </div>
-
-            <p className={style.desc}>{item.review}</p>
-
-            <p className={style.desc}>{item.createdAt}</p>
-
-            <div className={style.actions}>
-              <button
-                className={style.btn_accept}
-                onClick={() => handleUpdateStatue(item._id, "accept")}
-                
-              >
-                <HiCheck /> Accept
-              </button>
-              <button
-                className={style.btn_reject}
-                onClick={() => handleDeleteReview(item._id)}
-              >
-                <HiTrash /> Reject
-              </button>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
     </>
   );
 }

@@ -4,7 +4,7 @@ import icon2 from "../image/icon.png";
 import api from "../api";
 import toast from "react-hot-toast";
 import { CgProfile } from "react-icons/cg";
-import { useState } from "react"; 
+import { useState } from "react";
 
 function NavBar() {
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ function NavBar() {
 
   console.log(user);
 
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false); 
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const handleLogout = async () => {
     try {
@@ -27,14 +27,14 @@ function NavBar() {
   };
 
   const toggleDropdown = () => {
-    setIsDropdownOpen((prev) => !prev); 
+    setIsDropdownOpen((prev) => !prev);
   };
 
   return (
     <header className={style.nav}>
       <div className={style.inner}>
         <div className={style.logo}>
-          <h3>WorkiQ</h3>
+          <h3 onClick={() => navigate("/home")}>WorkiQ</h3>
         </div>
 
         <nav className={style.navList} aria-label="Primary">
@@ -57,19 +57,20 @@ function NavBar() {
                     Join
                   </button>
                 </li>
-                {/* Dropdown Icon */}
+
                 <li>
                   <button onClick={toggleDropdown}>
                     <CgProfile size="35px" />
                   </button>
 
-                  {/* Dropdown Menu */}
                   {isDropdownOpen && (
                     <div className={style.dropdownMenu}>
                       <button onClick={() => navigate("/profileuser")}>
                         Profile
                       </button>
-                      <button onClick={() => navigate("/review")}>Review</button>
+                      <button onClick={() => navigate("/review")}>
+                        Review
+                      </button>
                       <button onClick={handleLogout}>Logout</button>
                     </div>
                   )}

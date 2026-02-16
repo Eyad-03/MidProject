@@ -52,7 +52,7 @@ function UpdateUser() {
           <thead>
             <tr>
               <th>Id</th>
-              <th style={{paddingLeft:'55px'}}>Name</th>
+              <th style={{ paddingLeft: "55px" }}>Name</th>
               <th>Email</th>
               <th>Password</th>
               <th>Role</th>
@@ -71,7 +71,7 @@ function UpdateUser() {
               .map((user) => (
                 <tr key={user._id}>
                   <td>{user._id}</td>
-                  <td style={{paddingLeft:'55px'}}>{user.name}</td>
+                  <td style={{ paddingLeft: "55px" }}>{user.name}</td>
                   <td>{user.email}</td>
 
                   <td className={style.password}>{user.password}</td>

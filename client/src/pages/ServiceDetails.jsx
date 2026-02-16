@@ -3,7 +3,7 @@ import { MdEmail, MdStar, MdPayments } from "react-icons/md";
 import { FaInstagram } from "react-icons/fa";
 import { FaRegMessage } from "react-icons/fa6";
 import { useLocation } from "react-router-dom";
-import log from '../image/log.png'
+import log from "../image/log.png";
 import NavBar from "../components/NavBar";
 import api from "../api";
 import toast from "react-hot-toast";
@@ -11,7 +11,7 @@ import toast from "react-hot-toast";
 function ServiceDetails() {
   const { state } = useLocation();
   const { service } = state;
-console.log(service)
+  console.log(service);
   const serviceId = service._id;
 
   const handleAddRequest = async (providerId) => {
@@ -29,7 +29,6 @@ console.log(service)
     <>
       <NavBar />
 
-      {/* SECTION 1: Profile Header */}
       <div className={style.container_profile}>
         <div className={style.provider_details}>
           <p>{service.user.role}</p>
@@ -63,15 +62,12 @@ console.log(service)
         </div>
       </div>
 
-      {/* SECTION 2: Service Details with Image */}
       <div className={style.service_info_container}>
         <div className={style.service_content_grid}>
-          {/* Left Side: Service Image */}
           <div className={style.service_main_image}>
             <img src={service.image} alt={service.name} />
           </div>
 
-          {/* Right Side: Service Info */}
           <div className={style.info_card}>
             <h3>Service Overview</h3>
             <p className={style.description}>{service.description}</p>
@@ -81,7 +77,7 @@ console.log(service)
                 <MdPayments size={22} color="#0e4a4a" />
                 <div>
                   <label>Pricing</label>
-                  <span>{service.price}</span>
+                  <span>{service.price}$</span>
                 </div>
               </div>
               <div className={style.meta_item}>

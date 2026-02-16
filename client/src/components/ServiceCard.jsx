@@ -1,9 +1,8 @@
 import style from "../ui/ServiceCard.module.css";
 import { Link, useNavigate } from "react-router-dom";
 
-function ServiceCard({service}) {
-
-  const navigate =useNavigate()
+function ServiceCard({ service }) {
+  const navigate = useNavigate();
 
   return (
     <>
@@ -18,11 +17,13 @@ function ServiceCard({service}) {
             <p>{service.description}</p>
           </div>
           <div className={style.details_provider2}>
-            <p>{service.rate}</p>
-            <p>{service.price}</p>
+            <p>{service.rate}⭐</p>
+            <p>{service.price}$</p>
           </div>
           <div className={style.btn_apply}>
-            <Link to='/serviceDetail' state={{service}}>Apply</Link>
+            <Link to="/serviceDetail" state={{ service }}>
+              Apply
+            </Link>
           </div>
         </div>
       </div>

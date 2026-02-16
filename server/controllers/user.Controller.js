@@ -66,7 +66,7 @@ export const updateUser = async (req, res) => {
 };
 
 export const updatePassword = async (req, res) => {
-  //id, old, new, confirm
+
   const { id } = req.params;
   const { oldPassword, newPassword, confirmNewPassword } = req.body;
   try {

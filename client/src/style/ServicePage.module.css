@@ -1,16 +1,50 @@
-body
-{
-    background: linear-gradient(180deg, #bbd5d5, #ffffff);
+body {
+  background: linear-gradient(180deg, #bbd5d5, #ffffff);
+  margin: 0;
+  padding: 0;
 }
 
-.container_serviceCard
-{
+.container_serviceCard {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.container_serviceCard h1 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+}
+
+.grid_service {
+  display: grid;
+
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .container_serviceCard {
+    padding: 40px;
+  }
+
+  .grid_service {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .container_serviceCard h1 {
+    font-size: 2.2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container_serviceCard {
     padding: 15px 60px;
-}
+  }
 
-.grid_service
-{
-    display: grid;
-    grid-template-columns: auto auto auto;
+  .grid_service {
+    grid-template-columns: repeat(3, 1fr);
     gap: 50px;
+  }
 }

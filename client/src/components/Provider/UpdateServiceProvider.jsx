@@ -14,7 +14,7 @@ function UpdateServiceProvider() {
   const [query, setQuery] = useState("");
   const [addService, setAddService] = useState({
     user: userInfo._id,
-    name:"",
+    name: "",
     description: "",
     price: "",
     image: "",
@@ -78,10 +78,6 @@ function UpdateServiceProvider() {
       const res = await api.post("/createService", addService);
       console.log(res);
 
-      if (res.status !== 200) {
-        toast.error(res.data.message);
-      }
-
       setServices((prev) => [...prev, addService]);
 
       toast.success(res.data.message);
@@ -89,7 +85,7 @@ function UpdateServiceProvider() {
 
       setAddService({
         user: userInfo._id,
-        name:"",
+        name: "",
         description: "",
         price: "",
         image: "",
@@ -315,7 +311,7 @@ function UpdateServiceProvider() {
             <input
               type="text"
               placeholder="Enter User name"
-              defaultValue={userInfo._id}       
+              defaultValue={userInfo._id}
               disabled={true}
             />
           </div>
@@ -331,7 +327,6 @@ function UpdateServiceProvider() {
               }
             />
           </div>
-
 
           <div className={style.formGroup}>
             <label>Image</label>

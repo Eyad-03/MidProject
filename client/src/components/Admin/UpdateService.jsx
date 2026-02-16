@@ -13,8 +13,8 @@ function UpdateService() {
   const [editingId, setEditingId] = useState(null);
   const [query, setQuery] = useState("");
   const [addService, setAddService] = useState({
-    user:"",
-    name:"",
+    user: "",
+    name: "",
     description: "",
     price: "",
     image: "",
@@ -28,7 +28,7 @@ function UpdateService() {
       if (res.status !== 200) {
         toast.error(res.data.message);
       }
-      console.log(res.data)
+      console.log(res.data);
       setServices(res.data.services);
       toast.success("fetch service successfully");
     } catch {
@@ -78,17 +78,13 @@ function UpdateService() {
       const res = await api.post("/createService", addService);
       console.log(res);
 
-      if (res.status !== 200) {
-        toast.error(res.data.message);
-      }
-
       setServices((prev) => [...prev, addService]);
 
       toast.success(res.data.message);
       fetchservices();
 
       setAddService({
-        user:"",
+        user: "",
         name: "",
         description: "",
         price: "",
@@ -98,7 +94,7 @@ function UpdateService() {
       });
     } catch (err) {
       const errorMsg = err.response?.data?.message || "Failed to add service";
-    toast.error(errorMsg);
+      toast.error(errorMsg);
     }
   };
 
@@ -133,7 +129,8 @@ function UpdateService() {
             {services
               .filter(
                 (service) =>
-                  service.name && service.name.toLowerCase().includes(query.toLowerCase()) ||
+                  (service.name &&
+                    service.name.toLowerCase().includes(query.toLowerCase())) ||
                   service.price.includes(query),
               )
               .map((service) => {

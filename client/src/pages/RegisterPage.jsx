@@ -2,9 +2,9 @@ import style from "../style/RegisterPage.module.css";
 import test from "../image/test.png";
 import { useState } from "react";
 import api from "../api";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import logo from '../image/logo.png'
+import logo from "../image/logo.png";
 
 function RegisterPage() {
   const [name, setName] = useState("");
@@ -12,7 +12,7 @@ function RegisterPage() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [role, setRole] = useState("user");
-  const [major,setMajor]=useState('');
+  const [major, setMajor] = useState("");
 
   const navigate = useNavigate();
 
@@ -25,7 +25,7 @@ function RegisterPage() {
         password,
         confirmPassword,
         role,
-        major:major || 'User'
+        major: major || "User",
       });
       if (res.status !== 201) {
         toast.error(res.data.message);
@@ -44,7 +44,7 @@ function RegisterPage() {
         <div className={style.grid_container}>
           <div className={style.grid1_register}>
             <div className={style.logo}>
-              <h3>WorkiQ</h3>
+              <h3 style={{cursor:'pointer'}} onClick={()=>navigate('/home')}>WorkiQ</h3>
             </div>
             <p>By registering, you will be able to join our world!</p>
 
@@ -103,11 +103,11 @@ function RegisterPage() {
                     type="text"
                     value={major}
                     onChange={(e) => setMajor(e.target.value)}
-                  >
-                  </textarea>
+                  ></textarea>
                 </div>
               )}
               <button type="submit">Register</button>
+              <Link to='/signin'>Already have account ?</Link>
             </form>
           </div>
 

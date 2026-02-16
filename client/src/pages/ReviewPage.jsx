@@ -29,8 +29,6 @@ function ReviewPage() {
     }
   };
 
-
-
   const handleRatingChange = (newRating) => {
     setRating(newRating);
   };
@@ -72,7 +70,7 @@ function ReviewPage() {
             <textarea
               value={review}
               placeholder="Write your review here..."
-              onChange={(e)=>setReview(e.target.value)}
+              onChange={(e) => setReview(e.target.value)}
             />
           </div>
           <button type="submit" className={style.submitButton}>

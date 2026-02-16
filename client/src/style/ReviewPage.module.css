@@ -57,7 +57,7 @@
 }
 
 .star.selected {
-  color: #fbbf24; 
+  color: #fbbf24;
 }
 
 .star:hover {
@@ -90,25 +90,25 @@
     box-shadow 0.2s;
 }
 
-
-.textareaContainer textarea:focus
-{
-    outline: none;
-    border-color: #064e3b; 
-    box-shadow: 0 0 0 4px rgba(6, 78, 59, 0.1);
+.textareaContainer textarea:focus {
+  outline: none;
+  border-color: #064e3b;
+  box-shadow: 0 0 0 4px rgba(6, 78, 59, 0.1);
 }
 
 .submitButton {
   margin-top: 10px;
   padding: 16px;
-  background-color: #064e3b; 
+  background-color: #064e3b;
   color: white;
   border: none;
   border-radius: 12px;
   cursor: pointer;
   font-size: 16px;
   font-weight: 600;
-  transition: background-color 0.2s, transform 0.1s;
+  transition:
+    background-color 0.2s,
+    transform 0.1s;
 }
 
 .submitButton:hover {
@@ -118,4 +118,48 @@
 
 .submitButton:active {
   transform: scale(0.98);
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin: 30px auto;
+    padding: 30px;
+    width: 85%;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    margin: 20px auto;
+    padding: 20px;
+    width: 92%;
+    border-radius: 12px;
+  }
+
+  .title {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+
+  .stars {
+    font-size: 32px;
+    gap: 6px;
+  }
+
+  .form {
+    gap: 18px;
+  }
+
+  .submitButton {
+    padding: 14px;
+    font-size: 15px;
+  }
+
+  .textareaContainer textarea {
+    min-height: 100px;
+  }
 }

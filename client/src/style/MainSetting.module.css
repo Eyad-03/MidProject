@@ -11,13 +11,11 @@
   font-size: 15px;
 }
 
-
 .requestsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 24px;
 }
-
 
 .card {
   background: #ffffff;
@@ -31,7 +29,6 @@
   border: 1px solid #f0f0f0;
   transition: all 0.3s ease;
 }
-
 
 .card::before {
   content: "";
@@ -54,7 +51,6 @@
 .card:hover::before {
   opacity: 1;
 }
-
 
 .iconWrapper {
   background: #e0f2f1;
@@ -82,7 +78,6 @@
   line-height: 1.6;
   margin-bottom: 20px;
 }
-
 
 .btn {
   display: flex;
@@ -112,4 +107,26 @@
 
 .btn:hover span {
   transform: translateX(4px);
+}
+
+@media (max-width: 600px) {
+  .header h2 {
+    font-size: 22px;
+  }
+
+  .card {
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+  }
+
+  .iconWrapper {
+    width: 45px;
+    height: 45px;
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
 }

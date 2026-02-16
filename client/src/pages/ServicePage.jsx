@@ -11,36 +11,34 @@ import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
 
 function ServicePage() {
+  const [services, setService] = useState([]);
 
-const [services,setService]=useState([])
-
-const {id}=useParams()
-console.log(id)
+  const { id } = useParams();
+  console.log(id);
 
   const fetchService = async () => {
     try {
       const res = await api.get(`/getServiceCategoryById/${id}`);
-      console.log(res.data)
+      console.log(res.data);
 
       if (res.status !== 200) {
         toast.error(res.data.message);
       }
-      setService(res.data.services)
+      setService(res.data.services);
     } catch (error) {
       toast.error("faild to fetch service");
     }
   };
 
-useEffect(()=>{
-fetchService()
-},[id])
-
+  useEffect(() => {
+    fetchService();
+  }, [id]);
 
   return (
     <>
       <NavBar />
       <div className={style.container_serviceCard}>
-       <h1>{services?.category?.name}</h1>
+        <h1>{services?.category?.name}</h1>
 
         <div className={style.grid_service}>
           {services.map((service) => (

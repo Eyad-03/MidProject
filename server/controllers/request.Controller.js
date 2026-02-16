@@ -6,9 +6,9 @@ export const createRequest = async (req, res) => {
   const clientId = req.user.id;
   try {
     const newRequest = await Request.create({
-      provider: providerId, // Map providerId to 'provider'
-      client: clientId, // Map clientId to 'client'
-      service: serviceId, // Map serviceId to 'service'
+      provider: providerId, 
+      client: clientId, 
+      service: serviceId, 
     });
     return res
       .status(200)
@@ -26,11 +26,15 @@ export const getAllRequest = async (req, res) => {
       .populate("service", "name price description")
       .sort({ createdAt: -1 });
 
+      
+
     if (!requests) return res.status(404).json({ message: "request is empty" });
+
+    const validRequests = requests.filter(req => req.client && req.service);
 
     return res
       .status(200)
-      .json({ message: "fetch request successfully", requests });
+      .json({ message: "fetch request successfully", requests:validRequests });
   } catch (err) {
     res.status(500).json({ message: "Server Error", error: err.message });
   }

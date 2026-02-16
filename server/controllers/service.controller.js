@@ -30,7 +30,7 @@ if (!mongoose.Types.ObjectId.isValid(user)) {
       category,
       rate,
     });
-    //201 created
+
     return res
       .status(201)
       .json({ newService, message: "Service created successfully" });
@@ -38,11 +38,11 @@ if (!mongoose.Types.ObjectId.isValid(user)) {
     res.status(500).json({ message: "Error creating Service", error });
   }
 };
-//get all products
+
 export const getAllService = async (req, res) => {
   try {
     const services = await Service.find();
-    //in case there is o products
+
     if (services.length === 0) {
       return res
         .status(200)
@@ -67,14 +67,14 @@ export const getServiceProviderById = async (req, res) => {
     return res
       .status(200)
       .json({ services, message: "Service fetched successfully" });
-    //200 ok
+
   } catch (error) {
     res.status(500).json({ message: "Error fetching product", error });
   }
 };
 
 
-//get by id
+
 export const getServiceCategoryById = async (req, res) => {
   const { id } = req.params;
   try {
@@ -85,12 +85,12 @@ export const getServiceCategoryById = async (req, res) => {
     return res
       .status(200)
       .json({ services, message: "Service fetched successfully" });
-    //200 ok
+
   } catch (error) {
     res.status(500).json({ message: "Error fetching product", error });
   }
 };
-//delete by id
+
 export const deleteService = async (req, res) => {
   const { id } = req.params;
   try {
@@ -103,13 +103,13 @@ export const deleteService = async (req, res) => {
     return res
       .status(200)
       .json({ service, message: "service deleted successfully" });
-    //200 ok
+
   } catch (error) {
     res.status(500).json({ message: "Error deleteiong service", error });
   }
 };
 
-//update by id
+
 export const updateService = async (req, res) => {
   const { id } = req.params;
   const { name, description, price, image, rate, category } = req.body;
@@ -133,7 +133,7 @@ export const updateService = async (req, res) => {
     return res
       .status(200)
       .json({ service, message: "service updated successfully" });
-    //200 ok
+
   } catch (error) {
     res.status(500).json({ message: "Error updating service", error });
   }

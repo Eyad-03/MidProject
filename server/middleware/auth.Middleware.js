@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-//authincate middlware 
+
 export const protect = (req, res, next) => {
     let token = req.cookies.token
     if (!token) {
@@ -8,7 +8,7 @@ export const protect = (req, res, next) => {
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
         req.user = decoded;
-        console.log("Decoded User:", decoded); //debugging line
+        console.log("Decoded User:", decoded); 
         next();
     } catch (error) {
         return res.status(400).json({ message: "Invalid token." });

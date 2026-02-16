@@ -1,4 +1,4 @@
-import { useState } from "react"; 
+import { useState } from "react";
 import NavBar from "../NavBar";
 import SideBar from "../SideBar";
 import style from "../../style/DashboardProvider.module.css";
@@ -12,13 +12,13 @@ function DashboardAdmin() {
   };
 
   return (
-    
-    <div className={`${style.layout} ${!isSidebarOpen ? style.sidebarHidden : ""}`}>
+    <div
+      className={`${style.layout} ${!isSidebarOpen ? style.sidebarHidden : ""}`}
+    >
       <header className={style.nav}>
         <NavBar />
       </header>
 
-      
       <button className={style.toggleBtn} onClick={toggleSidebar}>
         {isSidebarOpen ? "◀" : "▶"}
       </button>

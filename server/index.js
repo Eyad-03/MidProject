@@ -16,7 +16,7 @@ connectDB();
 
 const app = express();
 
-//MIDDLEWARE 
+
 app.use(cookieParser());
 app.use(helmet())
 app.use(cors({

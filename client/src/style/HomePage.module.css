@@ -1,8 +1,7 @@
 .bg_home {
   background-color: #004a4a;
-  margin-top: 0px;
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 1fr 1fr;
   justify-content: space-between;
 }
 
@@ -11,7 +10,7 @@
 }
 
 .bg2 {
-  padding: 20px 140px 0px 0px;
+  padding: 20px 40px 0px 180px;
 }
 
 .bg_text {
@@ -85,12 +84,8 @@
 
 .img_popular {
   display: grid;
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: repeat(4, 1fr);
   gap: 16px;
-
-  padding: 0;
-  margin: 18px 0 0 0;
-  list-style: none;
 }
 
 .img_popular img {
@@ -126,7 +121,7 @@
   padding: 54px 24px;
 
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 1fr 1fr;
   gap: 28px;
   align-items: center;
 }
@@ -237,12 +232,9 @@
   font-size: 25px;
 }
 
-.category_heading
-{
+.category_heading {
   font-weight: 500;
 }
-
-/* --- Categories Section --- */
 
 .category {
   padding: 80px 24px;
@@ -256,9 +248,7 @@
   font-size: clamp(28px, 3vw, 36px);
   font-weight: 700;
   position: relative;
-
 }
-
 
 .category h2::after {
   content: "";
@@ -286,9 +276,11 @@
   overflow: hidden;
   border-radius: 20px;
   cursor: pointer;
-  height: 220px; 
+  height: 220px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .category_item:hover {
@@ -314,7 +306,7 @@
   right: 0;
   margin: 0;
   padding: 20px;
-  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
   color: white;
   font-weight: 600;
   font-size: 1.2rem;
@@ -326,11 +318,12 @@
 .category_item:hover .category_heading {
   padding-bottom: 30px;
   color: #5162e9;
-  background: linear-gradient(to top, rgba(255,255,255,0.95), rgba(255,255,255,0.8));
+  background: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 0.95),
+    rgba(255, 255, 255, 0.8)
+  );
 }
-
-
-/* --- Reviews Section --- */
 
 .reviews_section {
   padding: 80px 24px;
@@ -361,7 +354,9 @@
   text-align: left;
   position: relative;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
 }
@@ -389,7 +384,7 @@
 }
 
 .star_icon {
-  color: #fbbf24; /* Golden star color */
+  color: #fbbf24;
 }
 
 .review_text {
@@ -397,7 +392,7 @@
   line-height: 1.7;
   font-style: italic;
   font-size: 15px;
-  flex-grow: 1; /* Pushes the user name to the bottom */
+  flex-grow: 1;
   margin-bottom: 20px;
 }
 
@@ -429,11 +424,6 @@
   width: 100%;
   min-height: 250px;
   animation: fadeIn 0.4s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateX(10px); }
-  to { opacity: 1; transform: translateX(0); }
 }
 
 .nav_button {
@@ -473,19 +463,26 @@
 }
 
 .dot_active {
-  width: 25px; /* Pill shape for active dot */
+  width: 25px;
   height: 10px;
   background: #5162e9;
   border-radius: 10px;
   cursor: pointer;
 }
 
-/* Reusing your previous star/text styles */
-.star_icon { color: #fbbf24; }
-.quote_icon { color: rgba(81, 98, 233, 0.2); font-size: 30px; }
-.user_name { color: #5162e9; margin-top: 15px; border-top: 1px solid #f1f5f9; padding-top: 10px; }
-
-/* --- Carousel & Grid Layout --- */
+.star_icon {
+  color: #fbbf24;
+}
+.quote_icon {
+  color: rgba(81, 98, 233, 0.2);
+  font-size: 30px;
+}
+.user_name {
+  color: #5162e9;
+  margin-top: 15px;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 10px;
+}
 
 .carousel_wrapper {
   display: flex;
@@ -498,14 +495,13 @@
 
 .reviews_grid_container {
   display: grid;
-  /* Creates 3 equal columns */
-  grid-template-columns: repeat(3, 1fr); 
+
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   width: 100%;
   min-height: 320px;
 }
 
-/* Individual Card Styling */
 .review_card_dynamic {
   background: #ffffff;
   border: 1px solid rgba(15, 23, 42, 0.08);
@@ -519,18 +515,12 @@
   animation: slideIn 0.5s ease-out;
 }
 
-@keyframes slideIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
 .review_card_dynamic:hover {
   transform: translateY(-5px);
   box-shadow: 0 15px 35px rgba(81, 98, 233, 0.1);
   border-color: rgba(81, 98, 233, 0.2);
 }
 
-/* Nav Buttons */
 .nav_button {
   background: #5162e9;
   color: white;
@@ -551,7 +541,6 @@
   transform: scale(1.1);
 }
 
-/* Dots / Pagination */
 .dots_container {
   display: flex;
   justify-content: center;
@@ -574,15 +563,90 @@
   border-radius: 10px;
 }
 
-/* Reusing your color variables */
-.star_icon { color: #fbbf24; }
-.quote_icon { color: rgba(81, 98, 233, 0.15); font-size: 28px; margin-bottom: 5px;}
-.review_text { color: #475569; font-style: italic; line-height: 1.6; flex-grow: 1; }
-.user_name { color: #5162e9; margin-top: 15px; border-top: 1px solid #f1f5f9; padding-top: 10px; font-size: 15px;}
+.star_icon {
+  color: #fbbf24;
+}
+.quote_icon {
+  color: rgba(81, 98, 233, 0.15);
+  font-size: 28px;
+  margin-bottom: 5px;
+}
+.review_text {
+  color: #475569;
+  font-style: italic;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+.user_name {
+  color: #5162e9;
+  margin-top: 15px;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 10px;
+  font-size: 15px;
+}
 
-/* Responsive: On smaller screens, switch to 1 card */
 @media (max-width: 1024px) {
   .reviews_grid_container {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .bg_home {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .bg1 {
+    padding: 60px 20px 20px 20px !important;
+  }
+
+  .bg2 {
+    display: none;
+  }
+
+  .bg_text p {
+    margin: 0 auto 24px auto;
+  }
+
+  .badge_trend {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 1024px) {
+  .img_popular {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .img_popular {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .headering {
+    grid-template-columns: 1fr;
+    padding: 30px 20px;
+  }
+
+  .grid_header2 {
+    order: -1;
+  }
+
+  .grid_header1 {
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .reviews_grid_container {
+    grid-template-columns: 1fr;
+  }
+
+  .carousel_wrapper {
+    gap: 10px;
   }
 }
